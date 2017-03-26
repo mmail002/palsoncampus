@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="initial-scale=1.0">
+  <title>Weather App</title>
+  <link href="http://fonts.googleapis.com/css?family=Montserrat:400,700,inherit,400" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="css/standardize.css"> <!-- CSS Sheet used for styling -->
+  <link rel="stylesheet" href="css/index.css"> <!-- CSS Sheet used for styling -->
+</head>
+<body class="body page-index clearfix">
+  <div class="container clearfix">
+    <div id="panel">
+      <input id="address" type="textbox" value="City, State, Country" onkeydown = "if (event.keyCode == 13)
+                        document.getElementById('button').click()"  > <!--  input box for location -->
+      <input id = "button" type="button" value="Search" onclick="codeAddress()"> <!-- Button that will search location when you hit enter -->
+    </div>
+    <p class="location" ></p>
+    <input type="button" onclick="ChangeTemp()" id = "convert" value = ""> <!--  Button displayed as / C or / F that when clicked will convert temp -->
+    <p class="temperature" id = "temperature"></p> <!--  Location to render Temp -->
+    <p class="updated"></p> <!--  Location to render last updated -->
+    <p class = "day_high"></p>
+    <p class = "day_low"></p>
+    <div class="climate_bg"></div>
+    <div class="info_bg">
+
+      <img class="dropicon" src="images/Droplet.svg"> <!--  Humidity Image -->
+      <p class="humidity"></p> <!--  Location to render humidity -->
+
+      <img class="windicon" src="images/Wind.svg"> <!--  Wind Image -->
+      <div class="windspeed"></div> <!--  Location to render wind speed-->
+    </div>
+  </div>
+
+
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js" ></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.simpleWeather/3.1.0/jquery.simpleWeather.min.js"></script>
+<script src="js/weather.js"></script> <!-- Javasctipt code used -->
+<script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+
+</body>
+</html>
