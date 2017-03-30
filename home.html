@@ -1,0 +1,32 @@
+<html>
+  <head>
+    <title>The Time Is...</title>
+  </head>
+  <body>
+  {% if user %}
+    <p>
+      Welcome, {{ user.email() }}!
+      You can <a href="{{ logout_url }}">sign out</a>.
+    </p>
+  {% else %}
+    <p>
+      Welcome! To my Webpage
+      <a href="{{ login_url }}">Sign in or register</a> to customize.
+    </p>
+  {% endif %}
+    <p>The time is: {{ current_time }}</p>
+  {% if user %}
+    <form action="/prefs" method="post">
+      <label for="tz_offset">
+        Timezone offset from UTC (can be negative):
+      </label>
+      <input name="tz_offset" id="tz_offset" type="text"
+             size="4" value="{{ userprefs.tz_offset }}" />
+      <input type="submit" value="Set" />
+    </form>
+  {% endif %}
+  <!-- Docs at http://http://simpleweatherjs.com -->
+  <div id="weather"></div>
+  <button class="js-geolocation" style="display: none;">Use Your Location</button>
+  </body>
+</html>
