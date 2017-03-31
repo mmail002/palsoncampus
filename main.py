@@ -45,7 +45,7 @@ def register():
                     email=form.email.data,
                     password=form.password.data
                 )
-        return render_template(url_for('index'))
+        return render_template('thankyou_register.html', username=form.username.data)
     return render_template('register.html', form=form)
 
 
@@ -54,11 +54,11 @@ def login():
     form = forms.LoginForm()
     if form.validate_on_submit():
         try:
-            user = models.User.get(models.User.email == form.email.data)
+            user = models.User.exists(username = form.username.data)
         except models.DoesNotExist:
             flash("Your email or password does not match", "error")
         else:
-            if check_password_hash(user.password, form.password.data):
+            if user.password == form.password.data:
                 login_user()
                 flash("You've been logged in!", "success")
                 return redirect(url_for('index'))
@@ -67,10 +67,56 @@ def login():
     return render_template('login.html', form=form)
 
 
+@app.route('/create', methods=['GET'])
+def create():
+    try:
+
+        models.User.create_user(
+                username='nazalislam',
+                email='naz@subtlecoding.com',
+                password='password',
+                is_admin=True
+            )
+    except ValueError:
+        raise ValueError("User already exists.")
+    return 'to do create'
+
+@app.route('/update', methods=['GET'])
+def update():
+    try:
+
+        models.User.update_user(
+                username='nazalislam',
+                email='naz@subtlecoding.com',
+                password='newpassword',
+                admin=True
+            )
+    except ValueError:
+        raise ValueError("Invalid User.")
+    return 'to do update'
+
+
+@app.route('/delete', methods=['GET'])
+def delete():
+    try:
+
+        models.User.delete_user(
+                username='nazalislam',
+            )
+    except ValueError:
+        raise ValueError("Invalid User.")
+    return 'to do delete'
+
+
 @app.route('/')
 def index():
     return 'Hey!'
 
+
+@app.errorhandler(500)
+def server_error(e):
+    # Log the error and stacktrace.
+    return 'An internal error occurred. Better luck next time', 500
 
 if __name__ == '__main__':
     models.initialize()

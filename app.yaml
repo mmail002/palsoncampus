@@ -12,8 +12,15 @@ handlers:
 - url: /.*
   script: main.app
 
+- url: /create
+  script: main.create
+
+- url: /update
+  script: main.update
+
+- url: /delete
+  script: main.delete
+
 libraries:
-- name: jinja2
-  version: latest
 - name: markupsafe
   version: latest
