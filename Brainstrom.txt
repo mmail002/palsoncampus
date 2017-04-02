@@ -1,0 +1,26 @@
+<Brainstorm>
+
+Need to show option of private or public
+
+Be able to invite others on Fb add people by email too 
+
+Need to be able to set time and location
+
+Need to have owner of group who can add people or can grant other permission to add people
+
+Set background of event (like a profile picture)
+
+Have a wall in the event page
+
+Event name and description
+
+Show list of people who are going
+
+Export guest list
+
+Delete event
+
+
+
+
+
