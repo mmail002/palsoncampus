@@ -1,0 +1,49 @@
+#createEvent{
+  position:absolute;  // absolutely positioned
+  transition: .5s ease;
+  top: 250px; /*How far from top*/
+  left: 130px; /*How far from left*/
+  background:none!important; /*background color of button, none in this case so it blends*/
+  border:solid black 2px; /*None again so it blends*/
+  padding:0!important; /*None so it is no padded (had to explain... look it up)*/
+  min-height: 59px; /*Minumum height*/
+  font-size: 1.313em;
+  font-weight: 400; /*How thick font is (think boldness)*/
+  line-height: 1.38; /*Think of button in a label... how high the height of the "label" is*/
+  text-transform: uppercase; /*Makes the input uppercase*/
+  color: rgb(0,0,0); /*color of button*/
+  cursor:pointer; /*cursor will turn to had and allow a click*/
+}
+#EventLocation{
+  position:absolute;  // absolutely positioned
+  transition: .5s ease;
+  top: 50px; /*How far from top*/
+  left: 130px; /*How far from left*/
+  background:none!important; /*background color of button, none in this case so it blends*/
+  border:solid black 2px; /*None again so it blends*/
+  padding:0!important; /*None so it is no padded (had to explain... look it up)*/
+  min-height: 59px; /*Minumum height*/
+  font-size: 1.313em;
+  font-weight: 400; /*How thick font is (think boldness)*/
+  line-height: 1.38; /*Think of button in a label... how high the height of the "label" is*/
+  color: rgb(0,0,0); /*color of button*/
+
+}
+#EventDesc{
+  position:absolute;  // absolutely positioned
+  transition: .5s ease;
+  top: 150px; /*How far from top*/
+  left: 130px; /*How far from left*/
+  background:none!important; /*background color of button, none in this case so it blends*/
+  border:solid black 2px; /*None again so it blends*/
+  padding:0!important; /*None so it is no padded (had to explain... look it up)*/
+  min-height: 59px; /*Minumum height*/
+  font-size: 1.313em;
+  font-weight: 400; /*How thick font is (think boldness)*/
+  line-height: 1.38; /*Think of button in a label... how high the height of the "label" is*/
+  color: rgb(0,0,0); /*color of button*/
+}
+html {
+  background: grey;
+  background-size: cover;
+}

@@ -1,22 +1,23 @@
 <Brainstorm>
 
-Need to show option of private or public
+Need to show option of private or public (dropdown selection, that sets flag)
 
-Be able to invite others on Fb add people by email too 
+Be able to invite others on Fb add people by email too (input box, then can email person or find invitee’s user ID in db and add the event to their list of things displayed)
 
-Need to be able to set time and location
+Need to be able to set time and location (Check fb events creation)
 
 Need to have owner of group who can add people or can grant other permission to add people
+(Check box that guest can invite people or not)
 
-Set background of event (like a profile picture)
+Set background of event (like a profile picture) (Get from user profile page code)
 
-Have a wall in the event page
+Have a wall in the event page (Get from wall code)
 
-Event name and description
+Event name and description (input boxes)
 
-Show list of people who are going
+Show list of people who are going (Get from db)
 
-Export guest list
+Export guest list (From db)
 
 Delete event
 
