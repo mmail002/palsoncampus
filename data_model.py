@@ -1,5 +1,7 @@
 # shebang line:  #! /usr/bin/env python
 
+# Author: Jayant Arora
+# Contributors: 
 # Description: This file defines the data model for the palsoncampus application.
 # Date: Mon April 3 2017
 
