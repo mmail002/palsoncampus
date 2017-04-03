@@ -43,7 +43,9 @@
   line-height: 1.38; /*Think of button in a label... how high the height of the "label" is*/
   color: rgb(0,0,0); /*color of button*/
 }
-html {
-  background: grey;
+body {
+  width:100%;
+  height: 100%;
+  background: lightgrey;
   background-size: cover;
 }
