@@ -63,6 +63,6 @@ class Profile(ndb.Model):
 	likedPages = ndb.StructuredProperty(LikedPages, repeated = True)
 	campusInvolvement = ndb.StructuredProperty(CampusInvolvement, repeated = True)
 
-	gender = ndb.StructuredProperty() # TODO
+	# gender = ndb.StructuredProperty() # TODO
 	phone = ndb.IntegerProperty()
 
