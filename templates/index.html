@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/static/style.css" />
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    </head>
+    <body>
+            <h1 class="text-center">PalsOnCampus</h1>
+            <div id="main_container" class="row">
+                <div id="left_box" class="col-sm-6 right text-center">     
+                    <div class="container col-sm-12">
+                        <h3>Sign In</h3>
+                      <form class="form-horizontal">
+                        <div id="signin_form" class="form-group">
+                          <div id="email_field" class="col-sm-10 col-sm-offset-3">
+                            <input type="email" class="form-control" id="email" placeholder="Email">
+                          </div>
+                        </div>
+                        <div class="form-group">
+                          <div id="pass_field" class="col-sm-10 col-sm-offset-3">          
+                            <input type="password" class="form-control" id="pwd" placeholder="Password">
+                          </div>
+                        </div>
+                        <div class="form-group">      
+                            <div class="col-sm-offset-1 col-sm-10">
+                                <div class="checkbox">
+                                    <label id="remember_me_label" ><input type="checkbox"> Remember me</label>
+                                    <br>
+                                    <button  style="font-size:15px; color:white;" type="button" class="btn btn-link">forgot?</button>
+                                </div>
+                            </div>
+                        </div>  
+                        <div id="signin_button" class="form-group">        
+                          <div>
+                            <button style="font-size:17px;" type="submit" class="btn btn-primary">SignIn</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                </div>
+                
+                <div id="right_box" class="col-sm-13 text-center">     
+                    <h3>Sign Up</h3>
+                    <form class="form-horizontal">
+                        <div id="signup_form" class="form-group">
+                          <div id="fields" class="col-sm-offset-2 col-sm-10">
+                            <input type="text" class="form-control" id="name" placeholder="Full name">                                                       		 	     <input type="email" class="form-control" id="email_signup" placeholder="Email">
+                            <input type="password" class="form-control" id="pwd_signup" placeholder="Password">
+                            <input type="password" class="form-control" id="pwd_signup" placeholder="Re-enter password">  
+			    <div class="form-group col-sm-offset-1">
+                             	<button  style="font-size:17px;" id="signup" type="submit" class="btn btn-primary col-sm-offset-1">SignUp</button>
+                            <div> 
+			 </div>
+                        </div>
+                    </form> 
+                </div>
+            </div>
+    </body>
+</html>

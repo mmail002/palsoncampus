@@ -1,0 +1,68 @@
+ 
+body{
+    #background-color:#cf6766;
+    background-image: url('img/5.jpg');
+    font-family: 'Indie Flower', cursive;
+    
+}
+h1{
+    margin-top: 50px;
+    color: white;
+    font-size: 50px;
+    
+}  
+h3{
+    color: white;
+    font-size: 30px;
+}
+.right{
+    border-right:2px solid #C8C8C8;
+}
+#main_container{
+    margin-top: 40px;
+}
+#left_box{
+    height: 350px;        
+}
+#right_box{
+    height: 350px;
+}
+.padding{
+    padding:40px 200px;
+}
+#left_inside_box{
+    height:300px;
+}
+#pwd_signup{
+    margin-top:5px;
+}
+#signup{
+    margin-top:40px;
+}
+#email_signup{
+    margin-top:5px;
+}
+#signin_form{
+    margin-top:50px;
+}
+#signup_form{
+    margin-top:50px;
+    margin-left:20px;
+}
+#signin_button{
+    margin-top:24px;
+}
+#email_field{
+    width:400px;
+}
+#pass_field{
+    width:400px;
+}
+#fields{
+    width:400px;
+}
+#remember_me_label{
+    color:white;
+    font-size: 15px;
+}
+       
