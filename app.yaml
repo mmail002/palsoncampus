@@ -12,6 +12,9 @@ handlers:
 - url: /.*
   script: main.app
 
+- url: /style
+  static_dir: style
+
 - url: /create
   script: main.create
 

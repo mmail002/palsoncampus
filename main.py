@@ -110,8 +110,7 @@ def delete():
 
 @app.route('/')
 def index():
-    return 'Hey!'
-
+    return render_template('index.html')
 
 @app.errorhandler(500)
 def server_error(e):
