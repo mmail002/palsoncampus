@@ -10,14 +10,13 @@
 	# 2. Generate a random salt to append to the password.
 	# 4. Limit about to 255 characters. -- ComputedProperty maybe?
 	# 6. Hometown API integration
-	# 7. Define StructuredProperty for interests.
-	# 8. Define StructuredProperty for likedPages.
 
 ### DONE
 	# 3. Make StructuredProperty for past campuses.
 	# 5. Define StructuredProperty for uploadedPictures.
-
-
+	# 7. Define StructuredProperty for interests.
+	# 8. Define StructuredProperty for likedPages.
+	# 9. Define StructuredProperty for campusInvolvement.
 
 from google.appengine.ext import ndb
 
@@ -27,6 +26,17 @@ class PastCampus(ndb.Model):
 class UploadedPictures(ndb.Model):
 	picture = ndb.StringProperty() # store url to the image. 
 	public = ndb.BooleanProperty() # Is the picture available to public or not?
+
+class Interests(ndb.Model):
+	interest = ndb.StringProperty()
+
+class LikedPages(ndb.Model):
+	page = ndb.StringProperty() # store ID for the page. Might be changed to KeyProperty
+
+class CampusInvolvement(ndb.Model):
+	name = ndb.StringProperty()
+	start_date = ndb.DateTimeProperty()
+	end_date = ndb.DateTimeProperty()
 
 class Profile(ndb.Model):
 	profileID = ndb.KeyProperty(required = True)
@@ -49,10 +59,10 @@ class Profile(ndb.Model):
 
 	profilePicture = ndb.StringProperty() # this will store the url for the profile picture.
 	uploadedPictures = ndb.StructuredProperty(UploadedPictures, repeated = True)
-	
-	interests = ndb.StructuredProperty() # TODO
-	likedPages = ndb.StructuredProperty() # TODO
-	campusInvolvement = ndb.StructuredProperty() # TODO
+	interests = ndb.StructuredProperty(Interests, repeated = True)
+	likedPages = ndb.StructuredProperty(LikedPages, repeated = True)
+	campusInvolvement = ndb.StructuredProperty(CampusInvolvement, repeated = True)
+
 	gender = ndb.StructuredProperty() # TODO
 	phone = ndb.IntegerProperty()
 
