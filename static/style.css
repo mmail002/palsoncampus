@@ -1,68 +1,58 @@
- 
 body{
-    #background-color:#cf6766;
-    background-image: url('img/5.jpg');
+    background-image: url("img/5.jpg");
     font-family: 'Indie Flower', cursive;
-    
+    color:white;
 }
-h1{
-    margin-top: 50px;
-    color: white;
-    font-size: 50px;
-    
-}  
 h3{
-    color: white;
-    font-size: 30px;
+    font-size:29px;
 }
-.right{
-    border-right:2px solid #C8C8C8;
+#left{
+    margin-top:3%;        
 }
-#main_container{
-    margin-top: 40px;
-}
-#left_box{
-    height: 350px;        
-}
-#right_box{
-    height: 350px;
-}
-.padding{
-    padding:40px 200px;
-}
-#left_inside_box{
-    height:300px;
-}
-#pwd_signup{
-    margin-top:5px;
-}
-#signup{
-    margin-top:40px;
-}
-#email_signup{
-    margin-top:5px;
-}
-#signin_form{
-    margin-top:50px;
-}
-#signup_form{
-    margin-top:50px;
-    margin-left:20px;
+#right{
+    margin-top:3%;
 }
 #signin_button{
-    margin-top:24px;
+    font-size:17px;
+}
+#signup_button{
+    font-size:17px;
+}
+#title{
+    margin-top:4%;
+    font-size:50px;
+}
+#left_form{
+    margin-top:5%;
 }
 #email_field{
-    width:400px;
+    margin-left:18%;
 }
 #pass_field{
-    width:400px;
+    margin-left:18%;
 }
-#fields{
-    width:400px;
+#forgot{
+     font-size:15px;
 }
-#remember_me_label{
-    color:white;
-    font-size: 15px;
+/*right form starts from here*/
+#right_form{
+    margin-top:5%;
 }
-       
+#first_name_field{
+     margin-left:18%;
+}
+#last_name_field{
+     margin-left:18%;
+}
+#email_field{
+     margin-left:18%;
+}
+#pass_field{
+     margin-left:18%;
+}
+#re_pass_field{
+     margin-left:18%;
+}
+#birth_date_field{
+     margin-left:18%;
+}
