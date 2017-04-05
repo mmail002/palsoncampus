@@ -23,11 +23,7 @@ Delete event
 
 4/4/17:
 
-****Started working on getting calendar to pop up to select date, as of now if you run code you will see it in the background, need to get that to happen on click of an image of  a calendar maybe, need to get that figured out******
-
-
-
-Add input for date/time
+Add input for date/time — Date picker done, still need to do time
 
 figure out why CSS isn't being recognized on server. (Works when open through folder)
 

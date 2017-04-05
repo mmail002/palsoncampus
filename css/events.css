@@ -44,6 +44,8 @@
   color: rgb(0,0,0); /*color of button*/
 }
 
+/* Code for datpicker taken from http://www.hongkiat.com/blog/jquery-ui-datepicker/ */
+
 .ui-datepicker{
   width: 216px;
   height: auto;
