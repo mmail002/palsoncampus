@@ -3,8 +3,9 @@ body{
     font-family: 'Indie Flower', cursive;
     color:white;
 }
+
 h3{
-    font-size:29px;
+    font-size:2em;
 }
 #left{
     margin-top:3%;        
@@ -13,15 +14,15 @@ h3{
     margin-top:3%;
 }
 #signin_button{
-    font-size:17px;
+    font-size:1.5em;
 }
 #signup_button{
-    font-size:17px;
-   
+    font-size:1.5em;
+    margin-top:3%;   
 }
 #title{
     margin-top:4%;
-    font-size:50px;
+    font-size:4em;
 }
 #left_form{
     margin-top:5%;
@@ -33,7 +34,7 @@ h3{
     margin-left:18%;
 }
 #forgot{
-     font-size:15px;
+     font-size:1.5em;
 }
 /*right form starts from here*/
 #right_form{
