@@ -36,8 +36,12 @@ Add permission's. (Who can invite/post)
 Add event picture (profile code??)
 
 Code for wall after initial event setup.
+------------------------------------------------
+4/6/17
 
+Add checkbox for invites, Admin only or anyone.
 
+Choice for private or public event
 
 
 
