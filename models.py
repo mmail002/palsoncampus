@@ -1,4 +1,3 @@
-
 import datetime
 
 from google.appengine.api import memcache
@@ -13,6 +12,19 @@ class User(ndb.Model):
     joined_at = ndb.DateTimeProperty() 
     updated_at = ndb.DateTimeProperty() 
     is_admin = ndb.BooleanProperty(default=False)
+
+    #flask-login integration
+    def is_authenticated(self):
+        return True
+
+    def is_active(self):
+        return True
+
+    def is_anonymous(self):
+        return False
+
+    def get_id(self):
+        return self.username
 
     @classmethod
     def create_user(cls, username, email, password, is_admin=False):

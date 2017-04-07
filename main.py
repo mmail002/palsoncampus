@@ -1,5 +1,6 @@
 from flask import Flask, g, flash, render_template, url_for, redirect
-from flask_login import LoginManager
+from flask_login import (LoginManager, login_user, logout_user,
+                         current_user, login_required)
 
 import models
 
@@ -33,8 +34,9 @@ def after_request(response):
 def load_user(userid):
     try:
         return models.User.get(models.User.id == userid)
-    except models.DoesNotExist:
+    except:
         return None
+
 
 @app.route('/register', methods=['GET', 'POST'])
 def register():
@@ -53,18 +55,22 @@ def register():
 def login():
     form = forms.LoginForm()
     if form.validate_on_submit():
-        try:
-            user = models.User.exists(username = form.username.data)
-        except models.DoesNotExist:
-            flash("Your email or password does not match", "error")
-        else:
-            if user.password == form.password.data:
-                login_user()
+        user_check = models.User.query(models.User.username == form.username.data).get()
+        if user_check:
+            if user_check.password == form.password.data:
+                login_user(user_check)
                 flash("You've been logged in!", "success")
                 return redirect(url_for('index'))
             else:
                 flash("Your email or password does not match!", "error")
     return render_template('login.html', form=form)
+
+
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    return redirect(url_for('index'))
 
 
 @app.route('/create', methods=['GET'])
@@ -80,6 +86,7 @@ def create():
     except ValueError:
         raise ValueError("User already exists.")
     return 'to do create'
+
 
 @app.route('/update', methods=['GET'])
 def update():
@@ -112,10 +119,12 @@ def delete():
 def index():
     return render_template('index.html')
 
+
 @app.errorhandler(500)
 def server_error(e):
     # Log the error and stacktrace.
     return 'An internal error occurred. Better luck next time', 500
+
 
 if __name__ == '__main__':
     models.initialize()
