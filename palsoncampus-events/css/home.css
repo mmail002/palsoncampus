@@ -1,0 +1,21 @@
+#createEvent{
+  position:absolute;  // absolutely positioned
+  transition: .5s ease;
+  top: 300px; /*How far from top*/
+  left: 515px; /*How far from left*/
+  background:none!important; /*background color of button, none in this case so it blends*/
+  border:solid black 2px; /*None again so it blends*/
+  padding:0!important; /*None so it is no padded (had to explain... look it up)*/
+  font-size: 1.313em;
+  font-weight: 400; /*How thick font is (think boldness)*/
+  line-height: 1.38; /*Think of button in a label... how high the height of the "label" is*/
+  text-transform: uppercase; /*Makes the input uppercase*/
+  color: rgb(0,0,0); /*color of button*/
+  cursor:pointer; /*cursor will turn to had and allow a click*/
+}
+body {
+  width:100%;
+  height: 100%;
+  background: lightsalmon;
+  background-size: cover;
+}
