@@ -6,7 +6,6 @@
 # Date: Mon April 3 2017
 
 ### TODO
-	# 1. Convert password to hash64 -- md5?
 	# 2. Generate a random salt to append to the password.
 	# 4. Limit about to 255 characters. -- ComputedProperty maybe?
 	# 6. Hometown API integration
@@ -17,8 +16,10 @@
 	# 7. Define StructuredProperty for interests.
 	# 8. Define StructuredProperty for likedPages.
 	# 9. Define StructuredProperty for campusInvolvement.
+	# 1. Convert password to hash64 -- md5?
 
 from google.appengine.ext import ndb
+import hashlib
 
 class PastCampus(ndb.Model):
 	pastCampus = ndb.StringProperty() # ID in string format.
@@ -72,13 +73,14 @@ class Profile(ndb.Model):
 	def create_user(cls, email, nickName=None, password, firstName, lastName, birthDate, status=True, public=True, campus, pastCampus=None, hometown=None, about=None, profilePicture=None, uploadedPictures=None, interests=None, likedPages=None, campusInvolvement=None, gender=None, phone=None):
 		'''
 			Saves user information to db.
+			Key: email and password
 
 			Args:
 				email: email from the user. Must be of type abc@xyz.com
 				nickName: user's nickname. Type string. Default None.
 				password: set as string. Required.
 				firstName: string. Required
-				lastName: strign. Requried
+				lastName: string. Requried
 				birthDate: type data: Check dataProperty for info. Required
 				status: Active or Inactive -- True/False. Default True. should not be modified.
 				public: True/False: User can set its profile to be public/private. Default: True
@@ -93,8 +95,63 @@ class Profile(ndb.Model):
 				gender: Set this as a string of atmost one char. 'M', 'F' or 'O'
 				phone: User's phone number. Type check required.
 
+			Return:
+				True: if user setup was successful.
+				False: if a user already exists --- Will be updated for raising UserAlreadyExists error.
+
 		'''
-		user = Profile(email=email, nickName=nickName, password=password, firstName=firstName, lastName=lastName, birthDate=birthDate, status=status, public=public, campus=campus, pastCampus=pastCampus, hometown=hometown, about=about, profilePicture=profilePicture, uploadedPictures=uploadedPictures, interests=interests, likedPages=likedPages, campusInvolvement=campusInvolvement, gender=gender, phone=phone)
-		user.put()
-		return True
+		check = exists(email)
+		if(check == False):
+			password = hashlib.sha224(password).hexdigest() # password encrypted using sha224
+			user = Profile(id=email, email=email, nickName=nickName, password=password, firstName=firstName, lastName=lastName, birthDate=birthDate, status=status, public=public, campus=campus, pastCampus=pastCampus, hometown=hometown, about=about, profilePicture=profilePicture, uploadedPictures=uploadedPictures, interests=interests, likedPages=likedPages, campusInvolvement=campusInvolvement, gender=gender, phone=phone)
+			user.Key = ndb.Key('Person', email)
+			user.put()
+			return True
+		else:
+			# TODO Probably try to raise error
+			return False
+
+	@classmethod
+	def exists(cls, email):
+		'''
+			Checks for existence of user in the database.
+
+			Args:
+				email: Use email as it is the key for the db
+
+			Returns:
+				True: if user is found
+				False: if user is not found.
+		'''
+		userKey = ndb.Key('Person', email)
+		user = userKey.get()
+		if(user == None):
+			return False
+		else:
+			return True
+
+	@classmethod
+	def login_user(cls, email, password):
+		'''
+			Login model function
+
+			Args: 
+				email: user's email
+				password: user's password
+
+			Return:
+				False: if user is not in db. --- Will raise UserNotFound error in future,
+		'''
+		userCheck = exists(email)
+		if(userCheck == False):
+			return False
+		else:
+			userkey = ndb.Key('Person', email)
+			user = userKey.get()
+			passwordConvert = hashlib.sha224(password).hexdigest()
+			if(passwordConvert == user.password):
+				return user
+			else:
+				return False #--- Change to PasswordIncorrectError in future.
+
 
