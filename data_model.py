@@ -39,8 +39,8 @@ class CampusInvolvement(ndb.Model):
 	end_date = ndb.DateTimeProperty()
 
 class Profile(ndb.Model):
-	profileID = ndb.KeyProperty(required = True)
-	email = ndb.StringProperty(required = True)
+	# No need to set up a key, google datastore already does that in key.id() field.
+	email = ndb.StringProperty(required = True)	# In the mean time use this as key.
 	nickName = ndb.StringProperty()
 
 	password = ndb.StringProperty(required = True) # TODO Needs to have salt added to it and the converted to hash64
@@ -54,7 +54,7 @@ class Profile(ndb.Model):
 	campus = ndb.StringProperty(required = True) # This will store key from the collegeScorecard db and will referenced as such. 
 	pastCampus = ndb.StructuredProperty(PastCampus, repeated = True)
 
-	howetown = ndb.StringProperty() # TODO TEMPORARY until we have an API
+	hometown = ndb.StringProperty() # TODO TEMPORARY until we have an API
 	about = ndb.StringProperty() # Something about yourself - Limit for 255 chr still needed.
 
 	profilePicture = ndb.StringProperty() # this will store the url for the profile picture.
@@ -63,6 +63,11 @@ class Profile(ndb.Model):
 	likedPages = ndb.StructuredProperty(LikedPages, repeated = True)
 	campusInvolvement = ndb.StructuredProperty(CampusInvolvement, repeated = True)
 
-	gender = ndb.StructuredProperty() # TODO
+	gender = ndb.StringProperty() # Changed to string. Should be handled via form validation. 
 	phone = ndb.IntegerProperty()
+
+	############ Class methods go here ###########
+
+	@classmethod
+	def create_user(cls, email, nickName=None, password, firstName, lastName, birthDate, status, public, campus, pastCampus=None, hometown, about, profilePicture=None, uploadedPictures=None, interests=None, likedPages=None, campusInvolvement=None, gender=None, phone):
 
