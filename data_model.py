@@ -106,7 +106,7 @@ class Profile(ndb.Model):
 
 			Return:
 				True: if user setup was successful.
-				False: if a user already exists --- Will be updated for raising UserAlreadyExists error.
+				UserAlreadyExistsError if user is already registered.
 
 		'''
 		check = exists(email)
@@ -117,8 +117,7 @@ class Profile(ndb.Model):
 			user.put()
 			return True
 		else:
-			# TODO Probably try to raise error
-			return False
+			raise UserAlreadyExistsError
 
 	@classmethod
 	def exists(cls, email):
@@ -142,18 +141,19 @@ class Profile(ndb.Model):
 	@classmethod
 	def login_user(cls, email, password):
 		'''
-			Login model function
+			Login model function. Raises PasswordIncorrectError is password is incorrect. Raises UserNotFoundError if user is not registered.
 
 			Args: 
 				email: user's email
 				password: user's password
 
 			Return:
-				False: if user is not in db. --- Will raise UserNotFoundError in future,
+				Person object if authentication is successful.
+
 		'''
 		userCheck = exists(email)
 		if(userCheck == False):
-			return False
+			raise UserNotFoundError
 		else:
 			userkey = ndb.Key('Person', email)
 			user = userKey.get()
@@ -161,6 +161,6 @@ class Profile(ndb.Model):
 			if(passwordConvert == user.password):
 				return user
 			else:
-				return False #--- Change to PasswordIncorrectError in future.
+				raise PasswordIncorrectError
 
 
