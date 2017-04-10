@@ -50,7 +50,7 @@ class Profile(ndb.Model):
 	lastName = ndb.StringProperty(required = True)
 	birthDate = ndb.DateProperty(required = True)
 	status = ndb.BooleanProperty(required = True) # Shows inactive or active -- false or true respectively
-	public = ndb.BooleanProperty() # True if profile is public and false is not.
+	public = ndb.BooleanProperty(required = True) # True if profile is public and false is not.
 	campus = ndb.StringProperty(required = True) # This will store key from the collegeScorecard db and will referenced as such. 
 	pastCampus = ndb.StructuredProperty(PastCampus, repeated = True)
 
@@ -69,5 +69,32 @@ class Profile(ndb.Model):
 	############ Class methods go here ###########
 
 	@classmethod
-	def create_user(cls, email, nickName=None, password, firstName, lastName, birthDate, status, public, campus, pastCampus=None, hometown, about, profilePicture=None, uploadedPictures=None, interests=None, likedPages=None, campusInvolvement=None, gender=None, phone):
+	def create_user(cls, email, nickName=None, password, firstName, lastName, birthDate, status=True, public=True, campus, pastCampus=None, hometown=None, about=None, profilePicture=None, uploadedPictures=None, interests=None, likedPages=None, campusInvolvement=None, gender=None, phone=None):
+		'''
+			Saves user information to db.
+
+			Args:
+				email: email from the user. Must be of type abc@xyz.com
+				nickName: user's nickname. Type string. Default None.
+				password: set as string. Required.
+				firstName: string. Required
+				lastName: strign. Requried
+				birthDate: type data: Check dataProperty for info. Required
+				status: Active or Inactive -- True/False. Default True. should not be modified.
+				public: True/False: User can set its profile to be public/private. Default: True
+				campus: ID of the campus where user belongs to. Refer to collegescorecard ID. Required.
+				pastCampus: if user has been associated with past campuses. Should not be set here. User other function to set pastCampus. Do not modify.
+				hometown: Location as a string. [Temporary]. 
+				about: About user. Restrict this to 300 words. Restriction recommended, not necessary
+				profilePicture: store url of profile pic. Upload not handled here.
+				uploadedPictures: store url's of images. Upload not handled here.
+				likedPages: ID of pages liked by user. Do not modify. Like is not handled here. 
+				campusInvolvement: DO not modify. Not handled here.
+				gender: Set this as a string of atmost one char. 'M', 'F' or 'O'
+				phone: User's phone number. Type check required.
+
+		'''
+		user = Profile(email=email, nickName=nickName, password=password, firstName=firstName, lastName=lastName, birthDate=birthDate, status=status, public=public, campus=campus, pastCampus=pastCampus, hometown=hometown, about=about, profilePicture=profilePicture, uploadedPictures=uploadedPictures, interests=interests, likedPages=likedPages, campusInvolvement=campusInvolvement, gender=gender, phone=phone)
+		user.put()
+		return True
 
