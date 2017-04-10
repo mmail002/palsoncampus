@@ -21,6 +21,15 @@
 from google.appengine.ext import ndb
 import hashlib
 
+class UserAlreadyExistsError(Exception):
+	pass
+
+class UserNotFoundError(Exception):
+	pass
+
+class PasswordIncorrectError(Exception):
+	pass
+
 class PastCampus(ndb.Model):
 	pastCampus = ndb.StringProperty() # ID in string format.
 
@@ -140,7 +149,7 @@ class Profile(ndb.Model):
 				password: user's password
 
 			Return:
-				False: if user is not in db. --- Will raise UserNotFound error in future,
+				False: if user is not in db. --- Will raise UserNotFoundError in future,
 		'''
 		userCheck = exists(email)
 		if(userCheck == False):
