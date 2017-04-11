@@ -1,3 +1,0 @@
-# events
-
-Code for events
