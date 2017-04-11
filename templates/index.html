@@ -14,7 +14,7 @@
             <div class="row text-center">
                 <div id="left" class="col-sm-6">
                     <h3>Sign In</h3>
-                    <form id="left_form" class="form-horizontal">
+                    <form id="left_form" class="form-horizontal method="POST" action="/login">
                         <div id="signin_form" class="form-group">
                           <div id="email_field"  class="col-xs-8">
                             <input type="email" class="form-control" id="email" placeholder="Email">
@@ -43,7 +43,7 @@
                 </div>
                 <div id="right" class="col-sm-6">  
                     <h3>Sign Up</h3>
-                    <form id="right_form" class="form-horizontal">
+                    <form id="right_form" class="form-horizontal" method="POST" action="/register">
                         <div id="signin_form" class="form-group">
                           <div id="first_name_field" class="col-xs-8">
                             <input type="text" class="form-control" id="first" placeholder="First Name">
