@@ -1,3 +1,3 @@
 function EventPrefs(){
-	window.open("Event.html", "", 'top=200,left=375,width=500,height=400,scrollbars=yes'); 
+	window.open("Event.html", "", 'top=100,left=500,width=900,height=500,scrollbars=yes'); 
 }
