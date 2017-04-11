@@ -6,7 +6,7 @@
 
 from flask_wtf import Form
 from wtforms import (StringField, PasswordField, BooleanField, FileField, 
-        SelectField, RadioField, IntegerField)
+        SelectField, RadioField, IntegerField, DateField)
 from wtforms.validators import (DataRequired, Regexp, ValidationError, Email, Length, EqualTo)
 
 from models import User
@@ -46,19 +46,16 @@ class RegisterForm(Form):
     firstName = StringField('First Name',
                 validators=[
                         DataRequired(),
-                        message="Please enter your first name."
                     ]
             )
     lastName = StringField('Last Name',
                 validators=[
                         DataRequired(),
-                        message="Please enter your last name."
                     ]
             )
     birthDate = DateField('Birth Date',
                 validators=[
                         DataRequired(),
-                        message="Please enter a valid date."    
                     ]
             )
     status = BooleanField()
@@ -66,19 +63,16 @@ class RegisterForm(Form):
     campus = StringField('What campus are you in?',
                 validators=[
                         DataRequired(),
-                        message="Please enter a valid campus."
                     ]
             )
     pastCampus = StringField('Any past campus?',
                 validators=[
                         DataRequired(),
-                        message="Please enter a valid campus."
                     ]
             )
     hometown = StringField('Hometown?',
                 validators=[
                         DataRequired(),
-                        message="Please enter a valid address."
                     ]
             )
     about = StringField('About you...',
@@ -91,9 +85,7 @@ class RegisterForm(Form):
     campusInvolvement = StringField('Other assoicated campus...')
     gender = RadioField('Gender')
     phone = IntegerField('Enter your phone number', 
-                validators=[DataRequired(), 
-                        message="Enter a valid phone number"]
-                )
+                validators=[DataRequired()])
 
 
 class LoginForm(Form):
