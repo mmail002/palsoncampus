@@ -79,7 +79,7 @@ class Profile(ndb.Model):
 	############ Class methods go here ###########
 
 	@classmethod
-	def create_user(cls, email, nickName=None, password, firstName, lastName, birthDate, status=True, public=True, campus, pastCampus=None, hometown=None, about=None, profilePicture=None, uploadedPictures=None, interests=None, likedPages=None, campusInvolvement=None, gender=None, phone=None):
+	def create_user(cls, email,  password, firstName, lastName, birthDate, campus, status=True, public=True,  pastCampus=None, hometown=None, about=None, profilePicture=None, uploadedPictures=None, interests=None, likedPages=None, campusInvolvement=None, gender=None, phone=None, nickName=None):
 		'''
 			Saves user information to db.
 			Key: email and password
