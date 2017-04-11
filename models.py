@@ -1,3 +1,9 @@
+# Author: Naz-Al Islam
+# Contributors: []
+# Description: User datamodel for palsoncampus application
+# Date: Apr 10, 2017
+
+
 import datetime
 
 from google.appengine.api import memcache

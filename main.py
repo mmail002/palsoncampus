@@ -1,8 +1,16 @@
+# shebang line:  #!/usr/bin/env python3
+
+# Author: 
+# Contributors: [Naz-Al Islam, ]
+# Description: Main module for palsoncampus application 
+# Date: Apr 10, 2017
+
 from flask import Flask, g, flash, render_template, url_for, redirect
 from flask_login import (LoginManager, login_user, logout_user,
                          current_user, login_required)
 
 import models
+import data_model
 
 import forms
 
@@ -31,9 +39,9 @@ def after_request(response):
 
 
 @login_manager.user_loader
-def load_user(userid):
+def load_user(profileid):
     try:
-        return models.User.get(models.User.id == userid)
+        return data_model.Profile.get(data_model.Profile.id == profileid)
     except:
         return None
 
@@ -42,10 +50,26 @@ def load_user(userid):
 def register():
     form = forms.RegisterForm()
     if form.validate_on_submit():
-        models.User.create_user(
-                    username=form.username.data,
+        data_model.Profile.create_user(
                     email=form.email.data,
-                    password=form.password.data
+                    nickName=form.nickName.data,
+                    password=form.password.data,
+                    firstName=form.firstName.data,
+                    lastName=form.lastName.data,
+                    birthDate=form.birthDate.data,
+                    status=form.status.data,
+                    public=form.public.data,
+                    campus=form.campus.data,
+                    pastCampus=form.pastCampus.data,
+                    hometown=form.hometown.data,
+                    about=form.about.data,
+                    profilePicture=form.profilePicture.data,
+                    uploadedPictures=form.uploadedPictures.data,
+                    interests=form.interests.data,
+                    linkedPages=form.linkedPages.data,
+                    campusInvolvement=form.campusInvolvement.data,
+                    gender=form.gender.data,
+                    phone=form.phone.data
                 )
         return render_template('thankyou_register.html', username=form.username.data)
     return render_template('register.html', form=form)
@@ -55,7 +79,7 @@ def register():
 def login():
     form = forms.LoginForm()
     if form.validate_on_submit():
-        user_check = models.User.query(models.User.username == form.username.data).get()
+        user_check = data_model.Profile.query(data_model.Profile.nickName == form.nickName.data).get()
         if user_check:
             if user_check.password == form.password.data:
                 login_user(user_check)
