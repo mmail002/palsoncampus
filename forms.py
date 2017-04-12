@@ -4,7 +4,7 @@
 # Date: Mon April 10 2017
 
 
-from flask_wtf import Form
+from flask_wtf import FlaskForm
 from wtforms import (StringField, PasswordField, BooleanField, FileField, 
         SelectField, RadioField, IntegerField, DateField)
 from wtforms.validators import (DataRequired, Regexp, ValidationError, Email, Length, EqualTo)
@@ -16,7 +16,7 @@ def name_exists(form, field):
     if User.exists(field.data):
         raise ValidationError("User with that name already exists.")
 
-class RegisterForm(Form):
+class RegisterForm(FlaskForm):
     email = StringField('Email', 
                 validators=[
                         DataRequired(),
@@ -50,13 +50,13 @@ class RegisterForm(Form):
                         DataRequired(),
                     ]
             )
-    birthDate = DateField('Birth Date', format='%m/%d/%Y',
+    birthDate = DateField('mm/dd/yyyy', format='%m/%d/%Y',
                 validators=[
                         DataRequired(),
                     ]
             )
 
-class ProfileForm(Form):
+class ProfileForm(FlaskForm):
     nickName = StringField('Username',
                 validators=[
                         DataRequired(),
@@ -90,6 +90,11 @@ class ProfileForm(Form):
                 validators=[DataRequired()])
 
 
-class LoginForm(Form):
-    username  = StringField('Username', validators=[DataRequired()])
+class LoginForm(FlaskForm):
+    email = StringField('Email', 
+                validators=[
+                        DataRequired(),
+                        Email()
+                    ]
+            )
     password = PasswordField('Password', validators=[DataRequired()])
