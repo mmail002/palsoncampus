@@ -97,6 +97,11 @@ def logout():
     return redirect(url_for('index'))
 
 
+#Example of how to get to next page#
+@app.route('/event',methods=['GET', 'POST'])
+def event():
+    return render_template('Event.html')
+
 @app.route('/create', methods=['GET'])
 def create():
     try:

@@ -13,3 +13,7 @@ def index():
 
  If you run the dev_appserver it will pull up the button page, but on click it does not go to the event.html....
  It may mean we need to add code to main.py to get it to look for the next page
+
+ Remove pop-up window for time being, not sure how to do a pop-up window using flask and js
+
+ Am now using the same background and text style as home screen 

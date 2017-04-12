@@ -1,12 +1,16 @@
-<html>
+<html>  
   <head>
     <title>Events Screen</title>
     <link rel="stylesheet" type="text/css" href="/static/standardize.css"> <!-- CSS Sheet used for styling -->
   	<link rel="stylesheet" type="text/css" href="/static/button.css"/> <!-- CSS Sheet used for styling -->
+  	<link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
   </head>
   <body>
  <!--  <button id = "createEvent" onclick="window.location.href = 'Event.html'">Create Event!</button> -->
- 	<button id = "createEvent" onclick="EventPrefs()"> Create Event </button>
+ <form method="POST" action="/event">
+ 	<button type = "submit" id = "createEvent"> Create Event </button>
+ </form>
   <script src="/static/button.js"></script> <!-- Javasctipt code used -->
   </body>
 </html>
