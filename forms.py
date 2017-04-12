@@ -23,14 +23,6 @@ class RegisterForm(Form):
                         Email()
                     ]
             )
-    nickName = StringField('Username',
-                validators=[
-                        DataRequired(),
-                        Regexp(r'^[a-zA-Z0-9_]+$',
-                        message="Username should be one word, letters numbers, and underscores only."),
-                        name_exists
-                    ]
-            )
     password = PasswordField('Password',
                 validators=[
                         DataRequired(),
@@ -56,6 +48,16 @@ class RegisterForm(Form):
     birthDate = DateField('Birth Date',
                 validators=[
                         DataRequired(),
+                    ]
+            )
+
+class ProfileForm(Form):
+    nickName = StringField('Username',
+                validators=[
+                        DataRequired(),
+                        Regexp(r'^[a-zA-Z0-9_]+$',
+                        message="Username should be one word, letters numbers, and underscores only."),
+                        name_exists
                     ]
             )
     status = BooleanField()

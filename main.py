@@ -52,11 +52,21 @@ def register():
     if form.validate_on_submit():
         data_model.Profile.create_user(
                     email=form.email.data,
-                    nickName=form.nickName.data,
                     password=form.password.data,
                     firstName=form.firstName.data,
                     lastName=form.lastName.data,
                     birthDate=form.birthDate.data,
+                )
+        return render_template('thankyou_register.html', username=form.username.data)
+    return render_template('register.html', form=form)
+
+
+@app.route('/profile', methods=['GET', 'POST'])
+def profile():
+    form = forms.ProfileForm()
+    if form.validate_on_submit():
+        data_model.Profile.create_user(
+                    nickName=form.nickName.data,
                     status=form.status.data,
                     public=form.public.data,
                     campus=form.campus.data,
