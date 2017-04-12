@@ -141,7 +141,8 @@ def delete():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    #return render_template('index.html')
+    return render_template('button.html')
 
 
 @app.errorhandler(500)
