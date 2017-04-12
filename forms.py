@@ -45,7 +45,12 @@ class RegisterForm(Form):
                         DataRequired(),
                     ]
             )
-    birthDate = DateField('Birth Date',
+    campus = StringField('What campus are you in?',
+                validators=[
+                        DataRequired(),
+                    ]
+            )
+    birthDate = DateField('Birth Date', format='%m/%d/%Y',
                 validators=[
                         DataRequired(),
                     ]
@@ -62,11 +67,6 @@ class ProfileForm(Form):
             )
     status = BooleanField()
     public = BooleanField()
-    campus = StringField('What campus are you in?',
-                validators=[
-                        DataRequired(),
-                    ]
-            )
     pastCampus = StringField('Any past campus?',
                 validators=[
                         DataRequired(),

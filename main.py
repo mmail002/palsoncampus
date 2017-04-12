@@ -55,6 +55,7 @@ def register():
                     password=form.password.data,
                     firstName=form.firstName.data,
                     lastName=form.lastName.data,
+                    campus=form.campus.data,
                     birthDate=form.birthDate.data,
                 )
         return render_template('thankyou_register.html', username=form.username.data)
