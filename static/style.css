@@ -1,0 +1,60 @@
+body{
+    background-image: url("img/5.jpg");
+    font-family: 'Indie Flower', cursive;
+    color:white;
+}
+
+h3{
+    font-size:2em;
+}
+#left{
+    margin-top:3%;        
+}
+#right{
+    margin-top:3%;
+}
+#signin_button{
+    font-size:1.5em;
+}
+#signup_button{
+    font-size:1.5em;
+    margin-top:3%;   
+}
+#title{
+    margin-top:4%;
+    font-size:4em;
+}
+#left_form{
+    margin-top:5%;
+}
+#email_field{
+    margin-left:18%;
+}
+#pass_field{
+    margin-left:18%;
+}
+#forgot{
+     font-size:1.5em;
+}
+/*right form starts from here*/
+#right_form{
+    margin-top:5%;
+}
+#first_name_field{
+     margin-left:18%;
+}
+#last_name_field{
+     margin-left:18%;
+}
+#email_field{
+     margin-left:18%;
+}
+#pass_field{
+     margin-left:18%;
+}
+#re_pass_field{
+     margin-left:18%;
+}
+#birth_date_field{
+     margin-left:18%;
+}
