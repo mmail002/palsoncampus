@@ -18,6 +18,7 @@
                     <form id="left_form" class="form-horizontal" method="POST" action="/login">
                         <div id="signin_form" class="form-group">
                           <div id="email_field"  class="col-xs-8">
+                            {{form.hidden_tag()}}
                             <input type="email" class="form-control" id="email" placeholder="Email" name="email">
                           </div>
                         </div>
