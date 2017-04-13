@@ -3,6 +3,24 @@ body{
     font-family: 'Indie Flower', cursive;
     /*color:white; Made text for date white */
 }
+#hourSelect{
+  position:absolute;  // absolutely positioned
+  transition: .5s ease;
+  top: 20px; /*How far from top*/
+  left: 130px; /*How far from left*/
+}
+#minSelect{
+  position:absolute;  // absolutely positioned
+  transition: .5s ease;
+  top: 20px; /*How far from top*/
+  left: 230px; /*How far from left*/
+}
+#daytimeSelect{
+  position:absolute;  // absolutely positioned
+  transition: .5s ease;
+  top: 20px; /*How far from top*/
+  left: 330px; /*How far from left*/
+}
 #createEvent{
   position:absolute;  // absolutely positioned
   transition: .5s ease;
