@@ -22,8 +22,6 @@ Now does sanity check on temp
 
 Added daily high and low 
 
-not yet implemented on the unix server yet
-
 Need to get with html page writer and have him implement the code into html
 
 For now all the JS needed in right in the html, need to figure out how to get to look to js using flask 
