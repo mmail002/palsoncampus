@@ -79,6 +79,25 @@ class Profile(ndb.Model):
 	############ Class methods go here ###########
 
 	@classmethod
+	def exists(cls, email):
+		'''
+			Checks for existence of user in the database.
+
+			Args:
+				email: Use email as it is the key for the db
+
+			Returns:
+				True: if user is found
+				False: if user is not found.
+		'''
+		userKey = ndb.Key('Person', email)
+		user = userKey.get()
+		if(user == None):
+			return False
+		else:
+			return True
+
+	@classmethod
 	def create_user(cls, email,  password, firstName, lastName, birthDate, campus, status=True, public=True,  pastCampus=None, hometown=None, about=None, profilePicture=None, uploadedPictures=None, interests=None, likedPages=None, campusInvolvement=None, gender=None, phone=None, nickName=None):
 		'''
 			Saves user information to db.
@@ -118,25 +137,6 @@ class Profile(ndb.Model):
 			return True
 		else:
 			raise UserAlreadyExistsError
-
-	@classmethod
-	def exists(cls, email):
-		'''
-			Checks for existence of user in the database.
-
-			Args:
-				email: Use email as it is the key for the db
-
-			Returns:
-				True: if user is found
-				False: if user is not found.
-		'''
-		userKey = ndb.Key('Person', email)
-		user = userKey.get()
-		if(user == None):
-			return False
-		else:
-			return True
 
 	@classmethod
 	def login_user(cls, email, password):
