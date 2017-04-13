@@ -1,1 +1,5 @@
 *.pyc
+lib/**/**/**/*.pyc
+lib/**/**/*.pyc
+lib/**/*.pyc
+lib/*.pyc

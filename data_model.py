@@ -59,7 +59,7 @@ class Profile(ndb.Model):
 	firstName = ndb.StringProperty(required = True)
 	lastName = ndb.StringProperty(required = True)
 	birthDate = ndb.DateProperty(required = True)
-	status = ndb.BooleanProperty(required = True) # Shows inactive or active -- false or true respectively
+	profileStatus = ndb.BooleanProperty(required = True) # Shows inactive or active -- false or true respectively
 	public = ndb.BooleanProperty(required = True) # True if profile is public and false is not.
 	campus = ndb.StringProperty(required = True) # This will store key from the collegeScorecard db and will referenced as such. 
 	pastCampus = ndb.StructuredProperty(PastCampus, repeated = True)
@@ -90,15 +90,18 @@ class Profile(ndb.Model):
 				True: if user is found
 				False: if user is not found.
 		'''
-		userKey = ndb.Key('Person', email)
+
+		userKey = ndb.Key('Profile', email)
+
 		user = userKey.get()
+
 		if(user == None):
 			return False
 		else:
 			return True
 
 	@classmethod
-	def create_user(cls, email,  password, firstName, lastName, birthDate, campus, status=True, public=True,  pastCampus=None, hometown=None, about=None, profilePicture=None, uploadedPictures=None, interests=None, likedPages=None, campusInvolvement=None, gender=None, phone=None, nickName=None):
+	def create_user(cls, email,  password, firstName, lastName, birthDate, campus, profileStatus=True, public=True,  pastCampus=None, hometown=None, about=None, profilePicture=None, uploadedPictures=None, interests=None, likedPages=None, campusInvolvement=None, gender=None, phone=None, nickName=None):
 		'''
 			Saves user information to db.
 			Key: email and password
@@ -110,7 +113,7 @@ class Profile(ndb.Model):
 				firstName: string. Required
 				lastName: string. Requried
 				birthDate: type data: Check dataProperty for info. Required
-				status: Active or Inactive -- True/False. Default True. should not be modified.
+				profileStatus: Active or Inactive -- True/False. Default True. should not be modified.
 				public: True/False: User can set its profile to be public/private. Default: True
 				campus: ID of the campus where user belongs to. Refer to collegescorecard ID. Required.
 				pastCampus: if user has been associated with past campuses. Should not be set here. User other function to set pastCampus. Do not modify.
@@ -131,8 +134,8 @@ class Profile(ndb.Model):
 		check = Profile.exists(email)
 		if(check == False):
 			password = hashlib.sha224(password).hexdigest() # password encrypted using sha224
-			user = Profile(id=email, email=email, nickName=nickName, password=password, firstName=firstName, lastName=lastName, birthDate=birthDate, status=status, public=public, campus=campus, pastCampus=[], hometown=hometown, about=about, profilePicture=profilePicture, uploadedPictures=[], interests=[], likedPages=[], campusInvolvement=[], gender=gender, phone=phone)
-			user.Key = ndb.Key('Person', email)
+			user = Profile(id=email, email=email, nickName=nickName, password=password, firstName=firstName, lastName=lastName, birthDate=birthDate, profileStatus=profileStatus, public=public, campus=campus, pastCampus=[], hometown=hometown, about=about, profilePicture=profilePicture, uploadedPictures=[], interests=[], likedPages=[], campusInvolvement=[], gender=gender, phone=phone)
+			user.Key = ndb.Key('Profile', email)
 			user.put()
 			return True
 		else:
@@ -151,16 +154,16 @@ class Profile(ndb.Model):
 				Person object if authentication is successful.
 
 		'''
-		print(email)
 		userCheck = Profile.exists(email)
 		if(userCheck == False):
 			raise UserNotFoundError
 		else:
-			userkey = ndb.Key('Person', email)
-			user = userKey.get()
+			key = ndb.Key('Profile', email)
+			user = key.get()
 			passwordConvert = hashlib.sha224(password).hexdigest()
 			if(passwordConvert == user.password):
-				return user
+				# return user
+				return True
 			else:
 				raise PasswordIncorrectError
 

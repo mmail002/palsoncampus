@@ -70,7 +70,7 @@ def profile():
     if form.validate_on_submit():
         data_model.Profile.create_user(
                     nickName=form.nickName.data,
-                    status=form.status.data,
+                    profileStatus=form.status.data,
                     public=form.public.data,
                     campus=form.campus.data,
                     pastCampus=form.pastCampus.data,
@@ -97,16 +97,16 @@ def login():
     # if user_check.password == form.password.data:
         try:
             loginUser = data_model.Profile.login_user(email=form.email.data, password=form.password.data)
-            flash("You've been logged in!", "success")
+            return "You've been logged in!"
         except data_model.PasswordIncorrectError:
-            flash("Your email or password does not match!", "error")
+            return "Your email or password does not match!"
         except data_model.UserNotFoundError:
-            flash("user does not exist")
+            return "user does not exist"
         
     # return redirect(url_for('index'))
     # else:
-        
-    return render_template('login.html', form=form)
+    else:
+        return render_template('login.html', form=form)
 
 
 @app.route('/logout')
