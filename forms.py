@@ -50,7 +50,7 @@ class RegisterForm(FlaskForm):
                         DataRequired(),
                     ]
             )
-    birthDate = DateField('mm/dd/yyyy', format='%Y-%m-%d',
+    birthDate = DateField('mm/dd/yyyy', format='%m/%d/%Y',
                 validators=[
                         DataRequired(),
                     ]
