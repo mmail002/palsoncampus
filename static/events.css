@@ -3,6 +3,13 @@ body{
     font-family: 'Indie Flower', cursive;
     /*color:white; Made text for date white */
 }
+p{
+  position:absolute;  // absolutely positioned
+  transition: .5s ease;
+  top: 150px; /*How far from top*/
+  left: 130px; /*How far from left*/
+  width:350px;
+}
 #hourSelect{
   position:absolute;  // absolutely positioned
   transition: .5s ease;
