@@ -5,6 +5,7 @@
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="/static/style.css"/>
+	<script src="/static/college.js"></script>
         <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
         <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     </head>
@@ -17,12 +18,12 @@
                     <form id="left_form" class="form-horizontal method="POST" action="/login">
                         <div id="signin_form" class="form-group">
                           <div id="email_field"  class="col-xs-8">
-                            <input type="email" class="form-control" id="email" placeholder="Email">
+                            <input type="email" class="form-control" id="email" placeholder="Email" name="email">
                           </div>
                         </div>
                         <div class="form-group">
                           <div id="pass_field"  class="col-xs-8">          
-                            <input type="password" class="form-control" id="pwd" placeholder="Password">
+                            <input type="password" class="form-control" id="pwd" placeholder="Password" name="password">
                           </div>
                         </div>
                         <div class="form-group">      
@@ -46,33 +47,39 @@
                     <form id="right_form" class="form-horizontal" method="POST" action="/register">
                         <div id="signin_form" class="form-group">
                           <div id="first_name_field" class="col-xs-8">
-                            <input type="text" class="form-control" id="first" placeholder="First Name">
+                            <input type="text" class="form-control" id="first" placeholder="First Name" name="firstName">
                           </div> 
                         </div>
                         <div id="signin_form" class="form-group">
                           <div id="last_name_field"  class="col-xs-8" >
-                            <input type="text" class="form-control" id="last" placeholder="Last Name">
+                            <input type="text" class="form-control" id="last" placeholder="Last Name" name="lastName">
                           </div>
                         </div>
                         <div id="signin_form" class="form-group">
                           <div id="email_field"  class="col-xs-8" >
-                            <input type="email" class="form-control" id="email" placeholder="Email">
+                            <input type="email" class="form-control" id="email" placeholder="Email" name="email">
                           </div>
                         </div>
                         <div class="form-group">
                             <div id="pass_field"   class="col-xs-8" >          
-                            <input type="password" class="form-control" id="pwd" placeholder="Password">
+                            <input type="password" class="form-control" id="pwd" placeholder="Password" name="password">
                             </div>
                         </div>
                         <div class="form-group">
                             <div id="re_pass_field"  class="col-xs-8" >          
-                            <input type="password" class="form-control" id="re_pwd" placeholder="Re-enter password">
+                            <input type="password" class="form-control" id="re_pwd" placeholder="Re-enter password" name="password2">
                             </div>
                         </div>
                     
                         <div class="form-group">
                             <div id="birth_date_field"  class="col-xs-8">
-                                <input type="date" class="form-control" id="birth" placeholder="Date of Birth">
+                                <input type="date" class="form-control" id="birth" placeholder="Date of Birth" name="birthDate">
+                            </div>  
+                        </div>
+			                    
+                        <div class="form-group">
+                            <div id="campus_name"  class="col-xs-8">
+                                <input type="text" class="form-control" id="campus" placeholder="Campus" name="campus">
                             </div>  
                         </div>
                         <div class="form-group">        
