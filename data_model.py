@@ -151,6 +151,7 @@ class Profile(ndb.Model):
 				Person object if authentication is successful.
 
 		'''
+		print(email)
 		userCheck = Profile.exists(email)
 		if(userCheck == False):
 			raise UserNotFoundError

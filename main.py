@@ -91,15 +91,24 @@ def profile():
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     form = forms.LoginForm()
-    if form.validate_on_submit():
-        user_check = data_model.Profile.query(data_model.Profile.nickName == form.nickName.data).get()
-        if user_check:
-            if user_check.password == form.password.data:
-                login_user(user_check)
-                flash("You've been logged in!", "success")
-                return redirect(url_for('index'))
-            else:
-                flash("Your email or password does not match!", "error")
+    # if form.validate_on_submit():
+    #     user_check = data_model.Profile.query(data_model.Profile.nickName == form.nickName.data).get()
+    #     if user_check:
+    # if user_check.password == form.password.data:
+    try:
+        print(form.email)
+        print(form.password)
+        print(form.password.data)
+        loginUser = data_model.Profile.login_user(email=form.email.data, password=form.password.data)
+        flash("You've been logged in!", "success")
+    except data_model.PasswordIncorrectError:
+        flash("Your email or password does not match!", "error")
+    except data_model.UserNotFoundError:
+        flash("user does not exist")
+        
+    # return redirect(url_for('index'))
+    # else:
+        
     return render_template('login.html', form=form)
 
 
