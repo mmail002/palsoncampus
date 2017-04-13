@@ -45,6 +45,7 @@
                 <div id="right" class="col-sm-6">  
                     <h3>Sign Up</h3>
                     <form id="right_form" class="form-horizontal" method="POST" action="/register">
+                        {{form.hidden_tag()}}
                         <div id="signin_form" class="form-group">
                           <div id="first_name_field" class="col-xs-8">
                             <input type="text" class="form-control" id="first" placeholder="First Name" name="firstName">

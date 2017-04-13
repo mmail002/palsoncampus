@@ -128,10 +128,10 @@ class Profile(ndb.Model):
 				UserAlreadyExistsError if user is already registered.
 
 		'''
-		check = exists(email)
+		check = Profile.exists(email)
 		if(check == False):
 			password = hashlib.sha224(password).hexdigest() # password encrypted using sha224
-			user = Profile(id=email, email=email, nickName=nickName, password=password, firstName=firstName, lastName=lastName, birthDate=birthDate, status=status, public=public, campus=campus, pastCampus=pastCampus, hometown=hometown, about=about, profilePicture=profilePicture, uploadedPictures=uploadedPictures, interests=interests, likedPages=likedPages, campusInvolvement=campusInvolvement, gender=gender, phone=phone)
+			user = Profile(id=email, email=email, nickName=nickName, password=password, firstName=firstName, lastName=lastName, birthDate=birthDate, status=status, public=public, campus=campus, pastCampus=[], hometown=hometown, about=about, profilePicture=profilePicture, uploadedPictures=[], interests=[], likedPages=[], campusInvolvement=[], gender=gender, phone=phone)
 			user.Key = ndb.Key('Person', email)
 			user.put()
 			return True
@@ -151,7 +151,7 @@ class Profile(ndb.Model):
 				Person object if authentication is successful.
 
 		'''
-		userCheck = exists(email)
+		userCheck = Profile.exists(email)
 		if(userCheck == False):
 			raise UserNotFoundError
 		else:

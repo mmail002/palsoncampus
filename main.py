@@ -9,6 +9,7 @@ from flask import Flask, g, flash, render_template, url_for, redirect
 from flask_login import (LoginManager, login_user, logout_user,
                          current_user, login_required)
 
+
 import models
 import data_model
 
@@ -20,6 +21,7 @@ app.secret_key = 'ADASDQWqqqr2524tWT#T!!#!#!REFsdvsd&^&%^R'
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = 'login'
+
 
 
 DEBUG = True
@@ -58,7 +60,7 @@ def register():
                     campus=form.campus.data,
                     birthDate=form.birthDate.data,
                 )
-        return render_template('thankyou_register.html', username=form.username.data)
+        return render_template('thankyou_register.html', username=form.firstName.data)
     return render_template('register.html', form=form)
 
 
@@ -152,7 +154,8 @@ def delete():
 
 @app.route('/')
 def index():
-    return render_template('index.html')
+    form = forms.RegisterForm()
+    return render_template('index.html', form=form)
 
 
 @app.errorhandler(500)
