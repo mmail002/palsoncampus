@@ -162,9 +162,24 @@ class Profile(ndb.Model):
 			user = key.get()
 			passwordConvert = hashlib.sha224(password).hexdigest()
 			if(passwordConvert == user.password):
-				# return user
-				return True
+				return user
 			else:
 				raise PasswordIncorrectError
+
+	@classmethod
+	def update_pastCampus(cls, user, campusName):
+		'''
+			Adds pastcampus to user's profile. 
+			THIS WILL NOT REMOVE A CAMPUS.
+
+			Args:
+				user: a Person object that was returned during login.
+				campusName: the name of the campus retrieved from the user.
+
+			Return:
+				None.
+		'''
+		user.pastCampus.append(PastCampus(pastCampus= campusName))
+		user.put()
 
 

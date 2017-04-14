@@ -87,9 +87,12 @@ def profile():
         return render_template('thankyou_register.html', username=form.username.data)
     return render_template('register.html', form=form)
 
+# this variable will hold the user data retrieved from the database to reduce lookup again and agian. 
+user = []
 
 @app.route('/login', methods=['GET', 'POST'])
 def login():
+    global user
     form = forms.LoginForm()
     if form.validate_on_submit():
     #     user_check = data_model.Profile.query(data_model.Profile.nickName == form.nickName.data).get()
@@ -97,6 +100,8 @@ def login():
     # if user_check.password == form.password.data:
         try:
             loginUser = data_model.Profile.login_user(email=form.email.data, password=form.password.data)
+            user = loginUser
+            print(user)
             return "You've been logged in!"
         except data_model.PasswordIncorrectError:
             return "Your email or password does not match!"
