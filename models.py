@@ -78,13 +78,17 @@ class User(ndb.Model):
 def initialize():
     null
 
+
 class Post(ndb.Model):
-    user = ReferenceProperty(
-                rel_model=Profile,
-                related_name='posts'
-            )
-    visibiity = ndb.BooleanProperty()
-    content = TextProperty()
+    user = ndb.ReferenceProperty(rel_model=Profile, related_name='posts')
+    public = ndb.BooleanProperty()
+    content = ndb.TextProperty()
     number_of_likes = ndb.integerProperty()
     shared_links = ndb.StructuredProperty()
     
+
+    @classmethod
+    def create_post(cls, user, content, number_of_likes=0, public=True, shared_links=[])
+        content = Post(user=user, content=content, number_of_likes=number_of_likes, public=public, shared_links=shared_links)
+        content.put()
+        return content

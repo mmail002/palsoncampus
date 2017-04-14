@@ -6,7 +6,7 @@
 
 from flask_wtf import FlaskForm
 from wtforms import (StringField, PasswordField, BooleanField, FileField, 
-        SelectField, RadioField, IntegerField, DateField)
+        SelectField, RadioField, IntegerField, DateField, TextAreaField)
 from wtforms.validators import (DataRequired, Regexp, ValidationError, Email, Length, EqualTo)
 
 from models import User
@@ -98,3 +98,7 @@ class LoginForm(FlaskForm):
                     ]
             )
     password = PasswordField('Password', validators=[DataRequired()])
+
+
+class PostForm(FlaskForm):
+    content = TextAreaField("What are you upto?", validators=[DataRequired()])
