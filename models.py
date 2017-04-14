@@ -11,6 +11,8 @@ from google.appengine.api import users
 from google.appengine.ext import db
 from google.appengine.ext import ndb
 
+from data_model import Profile
+
 class User(ndb.Model):
     username = ndb.StringProperty()
     email = ndb.StringProperty()
@@ -76,4 +78,13 @@ class User(ndb.Model):
 def initialize():
     null
 
-
+class Post(ndb.Model):
+    user = ReferenceProperty(
+                rel_model=Profile,
+                related_name='posts'
+            )
+    visibiity = ndb.BooleanProperty()
+    content = TextProperty()
+    number_of_likes = ndb.integerProperty()
+    shared_links = ndb.StructuredProperty()
+    
