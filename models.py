@@ -6,8 +6,8 @@
 
 import datetime
 
-from google.appengine.api import memcache
-from google.appengine.api import users
+#from google.appengine.api import memcache
+#from google.appengine.api import users
 from google.appengine.ext import db
 from google.appengine.ext import ndb
 
@@ -75,20 +75,16 @@ class User(ndb.Model):
         k.delete()
 
 
-def initialize():
-    null
-
-
 class Post(ndb.Model):
-    user = ndb.ReferenceProperty(rel_model=Profile, related_name='posts')
+    user = ndb.StringProperty()
     public = ndb.BooleanProperty()
     content = ndb.TextProperty()
-    number_of_likes = ndb.integerProperty()
-    shared_links = ndb.StructuredProperty()
+    number_of_likes = ndb.IntegerProperty()
+    shared_links = ndb.StringProperty()
     
 
     @classmethod
-    def create_post(cls, user, content, number_of_likes=0, public=True, shared_links=[])
+    def create_post(cls, user, content, number_of_likes=0, public=True, shared_links):
         content = Post(user=user, content=content, number_of_likes=number_of_likes, public=public, shared_links=shared_links)
         content.put()
         return content
