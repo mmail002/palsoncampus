@@ -122,7 +122,7 @@ def logout():
 
 
 @app.route('/new_post', methods=['GET', 'POST'])
-@login_required
+#@login_required
 def post():
     form = forms.PostForm()
     if form.validate_on_submit():        

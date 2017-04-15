@@ -173,7 +173,7 @@ class Profile(ndb.Model):
 			THIS WILL NOT REMOVE A CAMPUS.
 
 			Args:
-				user: a Person object that was returned during login.
+				user: a Profile object that was returned during login.
 				campusName: the name of the campus retrieved from the user.
 
 			Return:
@@ -182,4 +182,18 @@ class Profile(ndb.Model):
 		user.pastCampus.append(PastCampus(pastCampus= campusName))
 		user.put()
 
+	@classmethod
+	def update_hometown(cls, user, newHometown):
+		'''
+			Update hometown of the user.
+
+			Args:
+				user: a Profile object needs to be passed that was returned during login
+				newHometown: the name of the new hometown that the user wants to set.
+
+			Return:
+				None
+		'''
+		user.hometown = newHometown
+		user.put()
 
