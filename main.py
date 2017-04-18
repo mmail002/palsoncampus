@@ -88,6 +88,7 @@ def profile():
     return render_template('register.html', form=form)
 
 # this variable will hold the user data retrieved from the database to reduce lookup again and agian. 
+# will need to check how to make sessions.
 user = []
 
 @app.route('/login', methods=['GET', 'POST'])
