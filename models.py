@@ -13,11 +13,21 @@ class User(ndb.Model):
     joined_at = ndb.DateTimeProperty() 
     updated_at = ndb.DateTimeProperty() 
     is_admin = ndb.BooleanProperty(default=False)
+    school = ndb.StringProperty()
+    major = ndb.StringProperty()
+    minor = ndb.StringProperty()
+    status = ndb.StringProperty()
+    gender = ndb.StringProperty()
+    hometown = ndb.StringProperty()
+    state = ndb.StringProperty()
+    country = ndb.StringProperty()
+    DoB = ndb.StringProperty()
 
     @classmethod
     def create_user(cls, username, email, password, is_admin=False):
 
         user = User(id=username, username=username, email=email, password=password, is_admin=is_admin, joined_at=datetime.datetime.now())
+        user.major = 'computer science'
 
 	user.put()
         return user
@@ -45,6 +55,25 @@ class User(ndb.Model):
 
 	user.put()
 
+        return user
+
+    @classmethod
+    def update_profile(cls, username, email, password, major, minor, school, status, gender, hometown, state, country):
+        k = ndb.Key('User', username)
+        user = k.get()
+        user.username = username
+        user.password = password
+        user.email = email
+        user.major = major
+        user.minor = minor
+        user.school = school
+        user.status = status
+        user.gender = gender
+        user.hometown = hometown
+        user.state = state
+        user.country = country
+
+        user.put()
         return user
 
     @classmethod

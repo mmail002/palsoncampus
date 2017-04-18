@@ -36,7 +36,67 @@ class RegisterForm(Form):
                 ]
             )
 
-
 class LoginForm(Form):
     username  = StringField('Username', validators=[DataRequired()])
     password = PasswordField('Password', validators=[DataRequired()])
+
+class ProfileUpdate(Form):
+    username = StringField('Username',
+                validators=[
+                    DataRequired(),
+                    Regexp(r'^[a-zA-Z0-9_]+$',
+                    message="Username should be one word, letters, numbers, and underscores only."),
+                    name_exists
+                    ]
+             )              
+    password = PasswordField('Password',
+                    validators=[
+                        DataRequired(),
+                        Length(min=2),
+                        EqualTo('password2', message="Passwords do not match!")
+                
+                        ]
+                    )
+    password2 = PasswordField('Confirm Password',
+                    validator=[
+                        DataRequired()
+                      ]
+                )
+
+    major = StringField('Major',
+                validators=[
+                    DataRequired()
+                ]
+            )
+    
+    minor = StringField('Minor',
+                validators=[
+                    DataRequired()
+                ]
+            )
+
+    status = StringField('Status',
+                validators=[
+                    DataRequired()
+                ]
+            )
+
+    gender = StringField('Gender',
+                validators=[
+                    DataRequired()
+                ]
+            )
+
+    hometown = StringField('Hometown',
+                validators=[
+                    DataRequired()
+                ]
+            )
+
+    state = StringField('State',
+                validators=[
+                    DataRequired()
+                ]
+            )
+
+    

@@ -95,6 +95,25 @@ def update():
         raise ValueError("Invalid User.")
     return 'to do update'
 
+@app.route('/update_profile', methods=['GET'])
+def update_profile():
+    try:
+        models.User.update_profile(
+            username = 'nazalislam',
+            password = '1234',
+            email = 'nmous003@plattsburgh.edu',
+            major = 'Computer Science',
+            minor = 'Graphic Design',
+            school = 'SUNY Plattsburgh',
+            status = 'active',
+            gender = 'female',
+            hometown = 'Plattsburgh',
+            state = 'New York',
+            country = 'USA'
+            )
+    except ValueError:
+        raise ValueError("Invalid information")
+    return 'to update profile'
 
 @app.route('/delete', methods=['GET'])
 def delete():

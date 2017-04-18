@@ -24,6 +24,9 @@ handlers:
 - url: /delete
   script: main.delete
 
+- url: /update_profile
+  script: main.update_profile
+
 libraries:
 - name: markupsafe
   version: latest
