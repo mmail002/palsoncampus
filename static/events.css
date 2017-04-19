@@ -3,6 +3,12 @@ body{
     font-family: 'Indie Flower', cursive;
     /*color:white; Made text for date white */
 }
+#map {
+  left: 65%;
+  top: 40%;
+  height: 200px;
+  width: 30%;
+}
 p{
   position:absolute;  // absolutely positioned
   transition: .5s ease;
