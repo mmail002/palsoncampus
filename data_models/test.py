@@ -42,10 +42,35 @@ class ProfileTest(unittest.TestCase):
     	### User test_create_profile to use data from previous method. ###
     	self.test_create_profile()
     	### end create user ###
+
+        ### test with correct credentials ###
     	email = 'first@last.com'
     	password = 'pass1'
     	user = profile.Profile.login_user(email=email, password=password)
     	self.assertIsInstance(user, profile.Profile)
+        ### end test with correct credentials ###
+
+        ### test with incorrect email but correct password ###
+        email = 'first@notlast.com'
+        password = 'pass1'
+        with self.assertRaises(profile.UserNotFoundError):
+            profile.Profile.login_user(email=email, password=password)
+        ### end test with incorrect email but correct password ###
+
+        ### test with correct email but incorrect password ###
+        email = 'first@last.com'
+        password = 'pass34'
+        with self.assertRaises(profile.PasswordIncorrectError):
+            profile.Profile.login_user(email=email, password=password)
+        ### end test with correct eamil but incorrect password ###
+
+        ### test with incorrect email and incorrect password ###
+        email = 'first@lastnot.com'
+        password = 'pass123'
+        with self.assertRaises(profile.UserNotFoundError):
+            profile.Profile.login_user(email=email, password=password)
+        ### end test with incorrect email and incorrect password ###
+
     	return user
 
     def test_update_pastCampus(self):
