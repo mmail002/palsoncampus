@@ -6,33 +6,79 @@ body{
 p{
   position:absolute;  // absolutely positioned
   transition: .5s ease;
-  top: 150px; /*How far from top*/
-  left: 130px; /*How far from left*/
-  width:350px;
+  top: 40%; /*How far from top*/
+  left: 40%; /*How far from left*/
+  background:none!important; /*background color of button, none in this case so it blends*/
+  border:solid black 2px; /*None again so it blends*/
+  padding:0!important; /*None so it is no padded (had to explain... look it up)*/
+  
+  font-size: 1.313em;
+  font-weight: 400; /*How thick font is (think boldness)*/
+  line-height: 1.38; /*Think of button in a label... how high the height of the "label" is*/
+  text-transform: uppercase; /*Makes the input uppercase*/
+  color: rgb(0,0,0); /*color of button*/
+  cursor:pointer; /*cursor will turn to had and allow a click*/
 }
 #hourSelect{
   position:absolute;  // absolutely positioned
   transition: .5s ease;
-  top: 20px; /*How far from top*/
-  left: 130px; /*How far from left*/
+  top: 50%; /*How far from top*/
+  left: 40%; /*How far from left*/
+  background:white!important; /*background color of button, none in this case so it blends*/
+  border:solid black 2px; /*None again so it blends*/
+  padding:0!important; /*None so it is no padded (had to explain... look it up)*/
+  font-size: 1em;
+  font-weight: 400; /*How thick font is (think boldness)*/
+  line-height: 2.38; /*Think of button in a label... how high the height of the "label" is*/
+  
 }
 #minSelect{
   position:absolute;  // absolutely positioned
   transition: .5s ease;
-  top: 20px; /*How far from top*/
-  left: 230px; /*How far from left*/
+  top: 50%; /*How far from top*/
+  left: 47%; /*How far from left*/
+  background:white!important; /*background color of button, none in this case so it blends*/
+  border:solid black 2px; /*None again so it blends*/
+  padding:0!important; /*None so it is no padded (had to explain... look it up)*/
+  font-size: 1em;
+  font-weight: 400; /*How thick font is (think boldness)*/
+  line-height: 2.38; /*Think of button in a label... how high the height of the "label" is*/
+  
 }
 #daytimeSelect{
   position:absolute;  // absolutely positioned
   transition: .5s ease;
-  top: 20px; /*How far from top*/
-  left: 330px; /*How far from left*/
+  top: 50%; /*How far from top*/
+  left: 55%; /*How far from left*/
+  background:white!important; /*background color of button, none in this case so it blends*/
+  border:solid black 2px; /*None again so it blends*/
+  padding:0!important; /*None so it is no padded (had to explain... look it up)*/
+  font-size: 1em;
+  font-weight: 400; /*How thick font is (think boldness)*/
+  line-height: 2.38; /*Think of button in a label... how high the height of the "label" is*/
+  
 }
 #createEvent{
   position:absolute;  // absolutely positioned
   transition: .5s ease;
-  top: 250px; /*How far from top*/
-  left: 130px; /*How far from left*/
+  top: 70%; /*How far from top*/
+  left: 40%; /*How far from left*/
+  background:none!important; /*background color of button, none in this case so it blends*/
+  border:solid black 2px; /*None again so it blends*/
+  padding:0!important; /*None so it is no padded (had to explain... look it up)*/
+  
+  font-size: 1.313em;
+  font-weight: 400; /*How thick font is (think boldness)*/
+  line-height: 1.38; /*Think of button in a label... how high the height of the "label" is*/
+  text-transform: uppercase; /*Makes the input uppercase*/
+  color: rgb(0,0,0); /*color of button*/
+  cursor:pointer; /*cursor will turn to had and allow a click*/
+}
+#place{
+  position:absolute;  // absolutely positioned
+  transition: .5s ease;
+  top: 10%; /*How far from top*/
+  left: 40%; /*How far from left*/
   background:none!important; /*background color of button, none in this case so it blends*/
   border:solid black 2px; /*None again so it blends*/
   padding:0!important; /*None so it is no padded (had to explain... look it up)*/
@@ -48,8 +94,8 @@ p{
 #EventName{
   position:absolute;  // absolutely positioned
   transition: .5s ease;
-  top: 50px; /*How far from top*/
-  left: 130px; /*How far from left*/
+  top: 20%; /*How far from top*/
+  left: 40%; /*How far from left*/
   background-color: white;
   border:solid black 2px; /*None again so it blends*/
   padding:0!important; /*None so it is no padded (had to explain... look it up)*/
@@ -63,8 +109,8 @@ p{
 #EventLocation{
   position:absolute;  // absolutely positioned
   transition: .5s ease;
-  top: 100px; /*How far from top*/
-  left: 130px; /*How far from left*/
+  top: 30%; /*How far from top*/
+  left: 40%; /*How far from left*/
   background-color: white;
   border:solid black 2px; /*None again so it blends*/
   padding:0!important; /*None so it is no padded (had to explain... look it up)*/
@@ -78,8 +124,8 @@ p{
 #EventDesc{
   position:absolute;  // absolutely positioned
   transition: .5s ease;
-  top: 200px; /*How far from top*/
-  left: 130px; /*How far from left*/
+  top: 60%; /*How far from top*/
+  left: 40%; /*How far from left*/
   background-color: white;
   border:solid black 2px; /*None again so it blends*/
   padding:0!important; /*None so it is no padded (had to explain... look it up)*/

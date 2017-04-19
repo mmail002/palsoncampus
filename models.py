@@ -32,6 +32,7 @@ class User(ndb.Model):
     def get_id(self):
         return self.username
 
+
     @classmethod
     def create_user(cls, username, email, password, is_admin=False):
 
