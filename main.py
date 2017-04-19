@@ -1,7 +1,7 @@
 # shebang line:  #!/usr/bin/env python3
 
-# Author: 
-# Contributors: [Naz-Al Islam, ]
+# Author: Naz-Al Islam
+# Contributors: [Jayant Arora]
 # Description: Main module for palsoncampus application 
 # Date: Apr 10, 2017
 
@@ -42,9 +42,9 @@ def after_request(response):
 
 
 @login_manager.user_loader
-def load_user(profileid):
+def load_user(email):
     try:
-        return data_model.Profile.get(data_model.Profile.id == profileid)
+        return data_model.Profile.get_user(email)
     except:
         return None
 
@@ -88,30 +88,26 @@ def profile():
         return render_template('thankyou_register.html', username=form.username.data)
     return render_template('register.html', form=form)
 
-# this variable will hold the user data retrieved from the database to reduce lookup again and agian. 
-# will need to check how to make sessions.
-user = []
-
 @app.route('/login', methods=['GET', 'POST'])
 def login():
-    global user
     form = forms.LoginForm()
     if form.validate_on_submit():
-    #     user_check = data_model.Profile.query(data_model.Profile.nickName == form.nickName.data).get()
-    #     if user_check:
-    # if user_check.password == form.password.data:
         try:
             loginUser = data_model.Profile.login_user(email=form.email.data, password=form.password.data)
-            user = loginUser
-            print(user)
+
+            ### Properties for login_user imported from flask ###
+            if loginUser.profileStatus == True:
+                loginUser.is_active = True
+            loginUser.is_authenticated = True
+            loginUser.is_anonymous = False
+            ### end properties for login_user ###
+
+            login_user(loginUser)
             return "You've been logged in!"
         except data_model.PasswordIncorrectError:
             return "Your email or password does not match!"
         except data_model.UserNotFoundError:
             return "user does not exist"
-        
-    # return redirect(url_for('index'))
-    # else:
     else:
         return render_template('login.html', form=form)
 
@@ -120,7 +116,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return redirect(url_for('index'))
+    return 'Logged out'
 
 
 #@app.route('/new_post', methods=['GET', 'POST'])

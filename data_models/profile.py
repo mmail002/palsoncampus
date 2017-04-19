@@ -197,3 +197,29 @@ class Profile(ndb.Model):
 		user.hometown = newHometown
 		user.put()
 
+	def get_id(user):
+		'''
+			This method is used to facilitate login_user function for flask. 
+
+			Return:
+				email of the user. which is actually the id of the user in the db
+		'''
+		return user.email
+
+	@classmethod
+	def get_user(cls, email):
+		'''
+			This method is only here to support get_user for maintaining flask sessions. 
+			SHOULD NOT BE USED ANYWHERE ELSE
+			
+			Args:
+				email: this is the email of the user. 
+
+			Return: 
+				Profile object
+		'''
+		key = ndb.Key('Profile', email)
+		user = key.get()
+		## required for flask integration.
+		user.is_authenticated = True
+		return user
