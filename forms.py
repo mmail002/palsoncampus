@@ -10,7 +10,7 @@ from wtforms import (StringField, PasswordField, BooleanField, FileField,
 from wtforms.validators import (DataRequired, Regexp, ValidationError, Email, Length, EqualTo)
 
 from models import User
-from data_model import Profile
+from data_models.profile import Profile
 
 def name_exists(form, field):
     if User.exists(field.data):

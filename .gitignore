@@ -3,3 +3,5 @@ lib/**/**/**/*.pyc
 lib/**/**/*.pyc
 lib/**/*.pyc
 lib/*.pyc
+._*
+.DS_Store

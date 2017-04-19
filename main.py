@@ -11,7 +11,8 @@ from flask_login import (LoginManager, login_user, logout_user,
 
 
 import models
-import data_model
+## UPDATE: needs rename to just profile.
+from data_models import profile as data_model
 
 import forms
 
