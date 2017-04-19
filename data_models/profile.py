@@ -221,5 +221,24 @@ class Profile(ndb.Model):
 		key = ndb.Key('Profile', email)
 		user = key.get()
 		## required for flask integration.
-		user.is_authenticated = True
-		return user
+		if(user == None):
+			raise UserNotFoundError
+		else:
+			user.is_authenticated = True
+			return user
+
+	@classmethod
+	def update_about(cls, user, about):
+		'''
+			This method will update 'about' section for the user's profile. 
+
+			Args:
+				user: Profile object
+				about: the new about provided by the user
+
+			Return:
+				None
+		'''
+		user.about = about
+		user.put()
+
