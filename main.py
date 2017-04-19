@@ -123,16 +123,16 @@ def logout():
     return redirect(url_for('index'))
 
 
-@app.route('/new_post', methods=['GET', 'POST'])
+#@app.route('/new_post', methods=['GET', 'POST'])
 #@login_required
-def post():
-    form = forms.PostForm()
-    if form.validate_on_submit():        
-        models.Post.create_post(user=g.user._get_current_object(),
-                    content=form.content.data.strip()
-                )
-        return redirect(url_for('index'))
-    return render_template('post.html', form=form)
+#def post():
+#    form = forms.PostForm()
+#    if form.validate_on_submit():        
+#        models.Post.create_post(user=g.user._get_current_object(),
+#                    content=form.content.data.strip()
+#                )
+#        return redirect(url_for('index'))
+#    return render_template('post.html', form=form)
 
 
 @app.route('/create', methods=['GET'])
