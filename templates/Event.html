@@ -123,10 +123,13 @@
   	<form>
     <p><input type="text" id="datepicker" placeholder="Date"></p>
 	  <input id = "EventName" type="text" name="Event Name" placeholder= "Event Name"><br>
-	  <input id = "EventLocation" type="text" name="Location" placeholder= "Location"><br>
+	  <input id = "EventLocation" type="text" name="Location" placeholder= "Location" onkeydown = "if (event.keyCode == 13)
+                        codeAddress()"><br>
 	  <input id = "EventDesc" type="text" name="Description" placeholder= "Description">
 	  <button id = "createEvent" type="button" >Created Event Nice!</button>
-      <button id = "place" type="button" >Place for upload image!</button>
+    <button id = "place" type="button" >Place for upload image!</button>
+
+    <script src = "events.js"></script>
 
 	</form>
   </body>
