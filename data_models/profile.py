@@ -226,3 +226,19 @@ class Profile(ndb.Model):
 		else:
 			user.is_authenticated = True
 			return user
+
+	@classmethod
+	def update_about(cls, user, about):
+		'''
+			This method will update 'about' section for the user's profile. 
+
+			Args:
+				user: Profile object
+				about: the new about provided by the user
+
+			Return:
+				None
+		'''
+		user.about = about
+		user.put()
+
