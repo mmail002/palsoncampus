@@ -221,5 +221,8 @@ class Profile(ndb.Model):
 		key = ndb.Key('Profile', email)
 		user = key.get()
 		## required for flask integration.
-		user.is_authenticated = True
-		return user
+		if(user == None):
+			raise UserNotFoundError
+		else:
+			user.is_authenticated = True
+			return user
