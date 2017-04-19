@@ -11,7 +11,7 @@ import datetime
 from google.appengine.ext import db
 from google.appengine.ext import ndb
 
-from data_model import Profile
+from data_models.profile import Profile
 
 class User(ndb.Model):
     username = ndb.StringProperty()
