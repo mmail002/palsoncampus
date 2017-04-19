@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8"> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="/static/style.css"/>
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>        
+</head>
+<body class="wall_body">
+    <nav class="navbar navbar-default navbar-fixed-top">        
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>                        
+                </button>          
+             <a href="#" class="navbar-brand">PalsOnCampus</a> 
+            </div>
+        <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+                <li class="dropdown">
+                    <form class="navbar-form">
+                    <div class="input-group">                    
+                        <input type="text" class="form-control" placeholder="Search">
+                    <div class="input-group-btn">
+                        <button class="btn btn-default" type="submit">
+                        <i class="glyphicon glyphicon-search"></i>
+                        </button>
+                    </div>
+                    </div>
+                    <a hraf="#">Weather Widget</a>          
+                    </form>                        
+                </li>
+          </ul>  
+      </div>   
+    </nav>
+    <div class="container-fluid">
+        <div class="row">
+            <div id="left_bar" class="col-md-4 text-center">
+                <img id="user" src="" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"> 
+            </div>
+            <div id="main_view" class="media col-md-8">
+                <div class="form-group">
+                    <form> <!--EXTRA FORM-->
+                        <label for="post">Create a Post:</label>
+                        <textarea placeholder="what are you doing right now?"class="form-control" rows="5" id="post">
+                        </textarea>
+                        <ul>
+                            <li><a href="#" data-toggle="tooltip" title="Picture">
+                                    <span style="color:black;"class="glyphicon glyphicon-picture"></span>
+                                </a>
+                            </li>
+                            <li>2</li>
+                            
+                            <li>3</li>
+                            <li>4</li>
+                            <button id="post_button" type="submit" class="btn btn-success green">Post</button>  
+                        </ul>                          
+                      
+                        
+                    </form>
+                    
+                </div>
+                
+                <div id="post_view">
+                    <div class="media-left">
+                        <img src="/static/img/user_icon.png" class="media-object" style="width:60px">
+                    </div>
+                    <div class="media-body">
+                        <h4 class="media-heading">Name</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                        <button type="button" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-thumbs-up"></span> Like
+                        </button>
+                        <button type="button" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-comment"></span> Comment
+                        </button>
+                        <button type="button" class="btn btn-default btn-sm">
+                          <span class="glyphicon glyphicon-share"></span> Share
+                        </button>
+                    </div>
+                    <div id="right" class="media-right">
+                        <div class="dropdown">
+                            <button class="btn btn-default dropdown-toggle" type="button" data-toggle="dropdown">
+                            <span class="caret"></span></button>
+                            <ul class="dropdown-menu">          
+                                <li>
+                                    <button type="button" class="btn btn-default btn-sm">
+                                      <span class="glyphicon glyphicon-edit"></span> Edit
+                                    </button>                                
+                                </li>
+                                <li>
+                                    <button type="button" class="btn btn-default btn-sm">
+                                      <span class="glyphicon glyphicon-trash"></span> Delete
+                                    </button>                                
+                                </li>                                
+                            </ul>
+                        </div>                    
+                    </div>
+                </div>
+                <hr>
+            </div>
+        </div>  
+    </div>    
+    <script>
+        $(document).ready(function(){
+    $('[data-toggle="tooltip"]').tooltip();   
+});
+    </script>    
+    
+</body>
+</html>

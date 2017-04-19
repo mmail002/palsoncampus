@@ -61,3 +61,41 @@ h3{
 #campus_name{
      margin-left:18%;
 }
+/*Wall*/
+#left_bar{
+    margin-top:4%;
+    height: 50em;
+    width:25em;
+    border-right:1px solid lightgrey;
+}
+#post_button{
+    float:right;
+}
+
+#user{
+    margin-top:10%;
+}
+#main_view{
+    margin-top:7%;
+}
+#post_view{
+    margin-top: 10%;
+}
+/*#right{
+    width:20%;
+}
+*/
+.dropdown-menu {
+    max-width: 10px; 
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li{
+    display: inline;
+    float:left;
+    margin-left:9px;
+}
+
