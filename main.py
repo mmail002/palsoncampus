@@ -24,7 +24,6 @@ login_manager.init_app(app)
 login_manager.login_view = 'login'
 
 
-
 DEBUG = True
 PORT = 8000
 HOST = '0.0.0.0'
@@ -69,7 +68,8 @@ def register():
 def profile():
     form = forms.ProfileForm()
     if form.validate_on_submit():
-        data_model.Profile.create_user(
+        # data_model.Profile.create_user(
+        models.update_user(
                     nickName=form.nickName.data,
                     profileStatus=form.status.data,
                     public=form.public.data,
@@ -103,11 +103,13 @@ def login():
             ### end properties for login_user ###
 
             login_user(loginUser)
-            return "You've been logged in!"
+            
+            # return "You've been logged in!"
+            return render_template('welcome.html', firstName=loginUser.firstName, lastName=loginUser.lastName)
         except data_model.PasswordIncorrectError:
             return "Your email or password does not match!"
         except data_model.UserNotFoundError:
-            return "user does not exist"
+            return "User does not exist"
     else:
         return render_template('login.html', form=form)
 
@@ -119,16 +121,16 @@ def logout():
     return 'Logged out'
 
 
-#@app.route('/new_post', methods=['GET', 'POST'])
-#@login_required
-#def post():
-#    form = forms.PostForm()
-#    if form.validate_on_submit():        
-#        models.Post.create_post(user=g.user._get_current_object(),
-#                    content=form.content.data.strip()
-#                )
-#        return redirect(url_for('index'))
-#    return render_template('post.html', form=form)
+@app.route('/new_post', methods=['GET', 'POST'])
+@login_required
+def post():
+    form = forms.PostForm()
+    if form.validate_on_submit():        
+        models.Post.create_post(user=g.user._get_current_object(),
+                    content=form.content.data.strip()
+                )
+        return redirect(url_for('index'))
+    return render_template('post.html', form=form)
 
 
 @app.route('/create', methods=['GET'])
