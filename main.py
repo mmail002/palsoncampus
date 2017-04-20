@@ -118,7 +118,7 @@ def login():
 @login_required
 def logout():
     logout_user()
-    return 'Logged out'
+    return dedirect(url_for('index')) 
 
 
 @app.route('/new_post', methods=['GET', 'POST'])
