@@ -2,7 +2,7 @@
 
 # Author: Jayant Arora
 # Contributors: []
-# Description: This file defines the data model for the palsoncampus application.
+# Description: This file defines the PROFILE data model for the palsoncampus application.
 # Date: Mon April 3 2017
 
 ### TODO
@@ -138,7 +138,7 @@ class Profile(ndb.Model):
 		if(check == False):
 			password = hashlib.sha224(password).hexdigest() # password encrypted using sha224
 			user = Profile(id=email, email=email, nickName=nickName, password=password, firstName=firstName, lastName=lastName, birthDate=birthDate, profileStatus=profileStatus, public=public, campus=campus, pastCampus=[], hometown=hometown, about=about, profilePicture=profilePicture, uploadedPictures=[], interests=[], likedPages=[], campusInvolvement=[], gender=gender, phone=phone)
-			user.Key = ndb.Key('Profile', email)
+			user.key = ndb.Key('Profile', email)
 			user.put()
 			return True
 		else:
