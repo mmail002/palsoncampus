@@ -263,3 +263,26 @@ class Profile(ndb.Model):
 			user.put()
 		else:
 			raise GenderDoesNotExistError
+
+	@classmethod
+	def update_phone(cls, user, phone):
+		'''
+			This metod will update phone number of user
+
+			Args:
+				user: a Profile object
+				phone: phone number. Max length accepted is 10 digits.
+					ValueError if number is greater than 10 digits
+					TypeError if type of phone number is not integer
+
+			Return:
+				None
+		'''
+		if(type(phone) == int):
+			if(len(str(phone)) > 10):
+				raise ValueError
+			else:
+				user.phone = phone
+				user.put()
+		else:
+			raise TypeError

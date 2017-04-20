@@ -1,5 +1,10 @@
 # Testing module to test datamodels.
 
+# Author: Jayant Arora
+# Contributors: []
+# Description: This file defines unit test for data model for the palsoncampus application.
+# Date: Mon April 18 2017
+
 import unittest
 import sys
 import datetime
@@ -132,6 +137,29 @@ class ProfileTest(unittest.TestCase):
             profile.Profile.update_gender(user, gender)
         ### end test with invalid gender ###
 
+    def test_update_phone(self):
+        ### login user ###
+        user = self.test_login_user()
+        ### end login user ###
+
+        ### test with correct phone number ###
+        phone = 1234567890
+        self.assertEqual(None, user.phone)
+        profile.Profile.update_phone(user, phone)
+        self.assertEqual(phone, user.phone)
+        ### end test with correct phone number ###
+
+        ### test with invalid length of phone number ###
+        phone = 123456789123424
+        with self.assertRaises(ValueError):
+            profile.Profile.update_phone(user, phone)
+        ### end test with invalid length of phoen number ###
+
+        ### test with invlid type of phone number ###
+        phone = 'hello'
+        with self.assertRaises(TypeError):
+            profile.Profile.update_phone(user, phone)
+        ### end test with invlid type of phone number ###
 
     def tearDown(self):
     	self.testbed.deactivate()
