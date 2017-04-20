@@ -2,7 +2,7 @@
 
 # Author: Jayant Arora
 # Contributors: []
-# Description: This file defines the data model for the palsoncampus application.
+# Description: This file defines the PROFILE data model for the palsoncampus application.
 # Date: Mon April 3 2017
 
 ### TODO
@@ -28,6 +28,9 @@ class UserNotFoundError(Exception):
 	pass
 
 class PasswordIncorrectError(Exception):
+	pass
+
+class GenderDoesNotExistError(Exception):
 	pass
 
 class PastCampus(ndb.Model):
@@ -135,7 +138,7 @@ class Profile(ndb.Model):
 		if(check == False):
 			password = hashlib.sha224(password).hexdigest() # password encrypted using sha224
 			user = Profile(id=email, email=email, nickName=nickName, password=password, firstName=firstName, lastName=lastName, birthDate=birthDate, profileStatus=profileStatus, public=public, campus=campus, pastCampus=[], hometown=hometown, about=about, profilePicture=profilePicture, uploadedPictures=[], interests=[], likedPages=[], campusInvolvement=[], gender=gender, phone=phone)
-			user.Key = ndb.Key('Profile', email)
+			user.key = ndb.Key('Profile', email)
 			user.put()
 			return True
 		else:
@@ -242,3 +245,44 @@ class Profile(ndb.Model):
 		user.about = about
 		user.put()
 
+	@classmethod
+	def update_gender(cls, user, gender):
+		'''
+			This method will update the gender attribute of the user's profile
+
+			Args:
+				user: Profile object
+				gender: M == male, F == female and O == other. No other value will accepted. 
+					will raise GenderDoesNotExistError if any other value is passed.
+
+			Return:
+				None
+		'''
+		if(gender == 'M' or gender == 'F' or gender == 'O'):
+			user.gender = gender
+			user.put()
+		else:
+			raise GenderDoesNotExistError
+
+	@classmethod
+	def update_phone(cls, user, phone):
+		'''
+			This metod will update phone number of user
+
+			Args:
+				user: a Profile object
+				phone: phone number. Max length accepted is 10 digits.
+					ValueError if number is greater than 10 digits
+					TypeError if type of phone number is not integer
+
+			Return:
+				None
+		'''
+		if(type(phone) == int):
+			if(len(str(phone)) > 10):
+				raise ValueError
+			else:
+				user.phone = phone
+				user.put()
+		else:
+			raise TypeError

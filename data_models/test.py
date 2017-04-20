@@ -1,5 +1,10 @@
 # Testing module to test datamodels.
 
+# Author: Jayant Arora
+# Contributors: []
+# Description: This file defines unit test for data model for the palsoncampus application.
+# Date: Mon April 18 2017
+
 import unittest
 import sys
 import datetime
@@ -10,7 +15,8 @@ sys.path.insert(1, '/home/jaror001/files/spring2017/csc485Cloud/sdk/fork-palsonc
 from google.appengine.api import memcache
 from google.appengine.ext import ndb
 from google.appengine.ext import testbed
-import profile
+
+import profile, post
 
 class ProfileTest(unittest.TestCase):
 
@@ -91,8 +97,99 @@ class ProfileTest(unittest.TestCase):
     	profile.Profile.update_hometown(user, newHometown)
     	self.assertEqual(newHometown, user.hometown)
 
+    def test_update_about(self):
+        ### login User ###
+        user = self.test_login_user()
+        ### end login user ###
+        about = "This is all about a person"
+        self.assertEqual(None, user.about)
+        profile.Profile.update_about(user, about)
+        self.assertEqual(about, user.about)
+
+    def test_update_gender(self):
+        ### login user ###
+        user = self.test_login_user()
+        ### end login user ###
+
+        ### test with gender as M == male ###
+        gender = 'M'
+        self.assertEqual(None, user.gender)
+        profile.Profile.update_gender(user, gender)
+        self.assertEqual(gender, user.gender)
+        ### end male gender test ###
+
+        ### test with gender as F == female ###
+        gender = 'F'
+        self.assertEqual('M', user.gender)
+        profile.Profile.update_gender(user, gender)
+        self.assertEqual(gender, user.gender)
+        ### end female gender test ###
+
+        ### test with gender as O == other ###
+        gender = 'O'
+        self.assertEqual('F', user.gender)
+        profile.Profile.update_gender(user, gender)
+        self.assertEqual(gender, user.gender)
+        ### end other gender test ### 
+
+        ### test with invalid gender ###
+        gender = 'asdfj'
+        with self.assertRaises(profile.GenderDoesNotExistError):
+            profile.Profile.update_gender(user, gender)
+        ### end test with invalid gender ###
+
+    def test_update_phone(self):
+        ### login user ###
+        user = self.test_login_user()
+        ### end login user ###
+
+        ### test with correct phone number ###
+        phone = 1234567890
+        self.assertEqual(None, user.phone)
+        profile.Profile.update_phone(user, phone)
+        self.assertEqual(phone, user.phone)
+        ### end test with correct phone number ###
+
+        ### test with invalid length of phone number ###
+        phone = 123456789123424
+        with self.assertRaises(ValueError):
+            profile.Profile.update_phone(user, phone)
+        ### end test with invalid length of phoen number ###
+
+        ### test with invlid type of phone number ###
+        phone = 'hello'
+        with self.assertRaises(TypeError):
+            profile.Profile.update_phone(user, phone)
+        ### end test with invlid type of phone number ###
+
     def tearDown(self):
     	self.testbed.deactivate()
+
+class PostTest(unittest.TestCase):
+
+    def setUp(self):
+        # First, create an instance of the Testbed class.
+        self.testbed = testbed.Testbed()
+        # Then activate the testbed, which prepares the service stubs for use.
+        self.testbed.activate()
+        # Next, declare which service stubs you want to use.
+        self.testbed.init_datastore_v3_stub()
+        self.testbed.init_memcache_stub()
+        # Clear ndb's in-context cache between tests.
+        # This prevents data from leaking between tests.
+        # Alternatively, you could disable caching by
+        # using ndb.get_context().set_cache_policy(False)
+        ndb.get_context().clear_cache()
+
+    def test_create_post(self):
+        email = 'first@last.com'
+        description = "This is a test post"
+        postkey = post.Post.create_post(profileID=email, description=description, test=True)
+        self.assertEqual(email, postkey.key.parent().id())
+        self.assertEqual(description, postkey.description)
+
+    def tearDown(self):
+        self.testbed.deactivate()
 
 if __name__ == '__main__':
     unittest.main()
