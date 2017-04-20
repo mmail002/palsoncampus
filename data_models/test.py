@@ -91,6 +91,48 @@ class ProfileTest(unittest.TestCase):
     	profile.Profile.update_hometown(user, newHometown)
     	self.assertEqual(newHometown, user.hometown)
 
+    def test_update_about(self):
+        ### login User ###
+        user = self.test_login_user()
+        ### end login user ###
+        about = "This is all about a person"
+        self.assertEqual(None, user.about)
+        profile.Profile.update_about(user, about)
+        self.assertEqual(about, user.about)
+
+    def test_update_gender(self):
+        ### login user ###
+        user = self.test_login_user()
+        ### end login user ###
+
+        ### test with gender as M == male ###
+        gender = 'M'
+        self.assertEqual(None, user.gender)
+        profile.Profile.update_gender(user, gender)
+        self.assertEqual(gender, user.gender)
+        ### end male gender test ###
+
+        ### test with gender as F == female ###
+        gender = 'F'
+        self.assertEqual('M', user.gender)
+        profile.Profile.update_gender(user, gender)
+        self.assertEqual(gender, user.gender)
+        ### end female gender test ###
+
+        ### test with gender as O == other ###
+        gender = 'O'
+        self.assertEqual('F', user.gender)
+        profile.Profile.update_gender(user, gender)
+        self.assertEqual(gender, user.gender)
+        ### end other gender test ### 
+
+        ### test with invalid gender ###
+        gender = 'asdfj'
+        with self.assertRaises(profile.GenderDoesNotExistError):
+            profile.Profile.update_gender(user, gender)
+        ### end test with invalid gender ###
+
+
     def tearDown(self):
     	self.testbed.deactivate()
 

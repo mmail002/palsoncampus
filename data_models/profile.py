@@ -30,6 +30,9 @@ class UserNotFoundError(Exception):
 class PasswordIncorrectError(Exception):
 	pass
 
+class GenderDoesNotExistError(Exception):
+	pass
+
 class PastCampus(ndb.Model):
 	pastCampus = ndb.StringProperty() # ID in string format.
 
@@ -242,3 +245,21 @@ class Profile(ndb.Model):
 		user.about = about
 		user.put()
 
+	@classmethod
+	def update_gender(cls, user, gender):
+		'''
+			This method will update the gender attribute of the user's profile
+
+			Args:
+				user: Profile object
+				gender: M == male, F == female and O == other. No other value will accepted. 
+					will raise GenderDoesNotExistError if any other value is passed.
+
+			Return:
+				None
+		'''
+		if(gender == 'M' or gender == 'F' or gender == 'O'):
+			user.gender = gender
+			user.put()
+		else:
+			raise GenderDoesNotExistError
