@@ -8,7 +8,8 @@
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
-    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>        
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 </head>
 <body class="wall_body">
     <nav class="navbar navbar-default navbar-fixed-top">        
@@ -74,14 +75,14 @@
                     <div class="media-body">
                         <h4 class="media-heading">Name</h4>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
-                        <button type="button" class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-thumbs-up"></span> Like
+                        <button type="button" data-toggle="tooltip" title="Thumbs Up" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-thumbs-up"></span> 
                         </button>
-                        <button type="button" class="btn btn-default btn-sm">
-                            <span class="glyphicon glyphicon-comment"></span> Comment
+                        <button id="comment_button" type="button" data-toggle="tooltip" title="Comment" class="btn btn-default btn-sm">
+                            <span class="glyphicon glyphicon-comment"></span> 
                         </button>
-                        <button type="button" class="btn btn-default btn-sm">
-                          <span class="glyphicon glyphicon-share"></span> Share
+                        <button type="button" data-toggle="tooltip" title="Share" class="btn btn-default btn-sm">
+                          <span class="glyphicon glyphicon-share"></span> 
                         </button>
                     </div>
                     <div id="right" class="media-right">
@@ -103,14 +104,30 @@
                         </div>                    
                     </div>
                 </div>
-                <hr>
+                <div id="comment_box" class="col-md-offset-1">
+                    <div class="media-left">
+                        <img src="/static/img/user_icon.png" class="media-object" style="width:60px">
+                    </div>                    
+                    <div class="media-body">
+                        <h5 class="media-heading">Name</h5>
+                        <textarea placeholder="Reply"class="form-control" rows="2" id="post"></textarea>
+                        <button id="comment_button1" type="submit" class="btn btn-success green">Post</button>                          
+                    </div>
+                </div>
             </div>
         </div>  
     </div>    
     <script>
         $(document).ready(function(){
-    $('[data-toggle="tooltip"]').tooltip();   
-});
+            $('[data-toggle="tooltip"]').tooltip();   
+        });
+        $(document).ready(function(){
+           $("#comment_button").click(function(){
+              $("#comment_box").toggle(); 
+           }); 
+        });
+
+        
     </script>    
     
 </body>
