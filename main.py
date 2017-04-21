@@ -105,7 +105,7 @@ def login():
             login_user(loginUser)
             
             # return "You've been logged in!"
-            return render_template('welcome.html', firstName=loginUser.firstName, lastName=loginUser.lastName)
+            return render_template('wall.html')
         except data_model.PasswordIncorrectError:
             return "Your email or password does not match!"
         except data_model.UserNotFoundError:
