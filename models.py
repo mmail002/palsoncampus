@@ -84,7 +84,7 @@ class Post(ndb.Model):
     
 
     @classmethod
-    def create_post(cls, user, content, shared_links, number_of_likes=0, public=True):
+    def create_post(cls, user, content, shared_links="links", number_of_likes=0, public=True):
         content = Post(user=user, content=content, number_of_likes=number_of_likes, public=public, shared_links=shared_links)
         content.put()
         return content

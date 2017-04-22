@@ -13,6 +13,7 @@ from flask_login import (LoginManager, login_user, logout_user,
 import models
 ## UPDATE: needs rename to just profile.
 from data_models import profile as data_model
+from data_models import post as post_model
 
 import forms
 
@@ -114,6 +115,16 @@ def login():
         return render_template('login.html', form=form)
 
 
+@app.route('/new_post', methods=['GET', 'POST'])
+@login_required
+def post():
+    form = forms.PostForm()
+    if form.validate_on_submit():        
+        post_model.Post.create_post(profileID, description, public, image, test)
+        return render_template("wall.html")
+    return render_template('post.html', form=form)
+
+
 @app.route('/logout')
 @login_required
 def logout():
@@ -121,22 +132,9 @@ def logout():
     return dedirect(url_for('index')) 
 
 
-@app.route('/new_post', methods=['GET', 'POST'])
-@login_required
-def post():
-    form = forms.PostForm()
-    if form.validate_on_submit():        
-        models.Post.create_post(user=g.user._get_current_object(),
-                    content=form.content.data.strip()
-                )
-        return redirect(url_for('index'))
-    return render_template('post.html', form=form)
-
-
 @app.route('/create', methods=['GET'])
 def create():
     try:
-
         models.User.create_user(
                 username='nazalislam',
                 email='naz@subtlecoding.com',
