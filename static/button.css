@@ -1,8 +1,8 @@
 #createEvent{
   position:absolute;  // absolutely positioned
   transition: .5s ease;
-  top: 300px; /*How far from top*/
-  left: 515px; /*How far from left*/
+  top: 40%; /*How far from top*/
+  left: 40%; /*How far from left*/
   background:none!important; /*background color of button, none in this case so it blends*/
   border:solid black 2px; /*None again so it blends*/
   padding:0!important; /*None so it is no padded (had to explain... look it up)*/
