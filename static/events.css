@@ -112,6 +112,12 @@ p{
   color: rgb(0,0,0); /*color of button*/
 
 }
+
+#LocSearch{
+  background: transparent;
+  border: none !important;
+  font-size:0;
+}
 #EventLocation{
   position:absolute;  // absolutely positioned
   transition: .5s ease;
