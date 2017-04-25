@@ -45,3 +45,15 @@ Choice for private or public event
 
 
 
+4/25/17
+———————————————————————
+Data Model for Event
+
+BootStrap for html
+
+Google Maps API Implementation
+
+
+
+
+
