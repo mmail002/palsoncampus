@@ -49,9 +49,9 @@ Choice for private or public event
 ———————————————————————
 Data Model for Event
 
-BootStrap for html
+BootStrap for html -- not using bootstrap but using % for top and left so items on screen move with screen minimization 
 
-Google Maps API Implementation
+Google Maps API Implementation -- done
 
 
 
