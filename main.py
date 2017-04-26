@@ -123,6 +123,15 @@ def post():
         post_model.Post.create_post(profileID, description, public, image, test)
         return render_template("wall.html")
     return render_template('post.html', form=form)
+  
+@app.route('/create_event', methods=['GET', 'POST'])
+@login_required
+def event():
+    form = forms.eventForm()
+    if form.validate_on_submit():        
+        event_model.event.create_event(profileID, EventName, Location, Date, Time, Description, test)
+        return render_template("wall.html")
+    return render_template('events.html', form=form)
 
 
 @app.route('/logout')
