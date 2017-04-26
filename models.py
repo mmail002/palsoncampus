@@ -88,3 +88,19 @@ class Post(ndb.Model):
         content = Post(user=user, content=content, number_of_likes=number_of_likes, public=public, shared_links=shared_links)
         content.put()
         return content
+
+class Event(ndb.Model):
+    Creator = ndb.StringProperty()
+    EventName = ndb.StringProperty()
+    Location = ndb.StringProperty()
+    Date = ndb.DateTimeProperty()
+    Time = ndb.DateTimeProperty()
+    Description = ndb.TextProperty()
+    
+
+    @classmethod
+    def create_event(cls, user, content, shared_links="links", number_of_likes=0, public=True):
+        content = Event(Creator=Creator, EventName=EventName, Location=Location, Date=Date, Time=Time, Description=Description)
+        content.put()
+        return content
+
