@@ -112,7 +112,7 @@ class EventForm(FlaskForm):
                         DataRequired(),
                     ]
             )
-    Time = = TimeField(hour, minute, AM/PM,
+    Time = TimeField(hour, minute, AM/PM,
                 validators=[
                         DataRequired(),
                     ]
