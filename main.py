@@ -126,7 +126,7 @@ def post():
             )
         return render_template("wall.html")
     return render_template('post.html', form=form)
-  
+'''  
 @app.route('/create_event', methods=['GET', 'POST'])
 @login_required
 def event():
@@ -135,6 +135,7 @@ def event():
         event_model.event.create_event(profileID, EventName, Location, Date, Time, Description, test)
         return render_template("wall.html")
     return render_template('Event.html', form=form)
+'''
 
 
 @app.route('/logout')
