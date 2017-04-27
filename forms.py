@@ -102,7 +102,7 @@ class LoginForm(FlaskForm):
 
 class PostForm(FlaskForm):
     content = TextAreaField("What are you upto?", validators=[DataRequired()])
-
+'''
 class EventForm(FlaskForm):
     Creator  = StringField("Who created this")
     EventName = StringField("What is the event called")
@@ -118,4 +118,4 @@ class EventForm(FlaskForm):
                     ]
             )
     Description = TextAreaField("Describe the event", validators=[DataRequired()])
-
+'''
