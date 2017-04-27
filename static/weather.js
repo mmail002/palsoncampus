@@ -1,10 +1,10 @@
 
-if("geolocation" in navigator) { //If geolocation is available, ask browser
+/*if("geolocation" in navigator) { //If geolocation is available, ask browser
     function success1(position) { // If geolocation is accepted, the func will return data
     var latitude  = position.coords.latitude;
     var longitude = position.coords.longitude;
     loadWeather(latitude+','+longitude);
-}
+}*/
     
     TempLocation = ""; //Var that will stored college from db
     function error1() { //If Geolocation request is denied the func will do this
