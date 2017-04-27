@@ -120,7 +120,10 @@ def login():
 def post():
     form = forms.PostForm()
     if form.validate_on_submit():        
-        post_model.Post.create_post(profileID, description, public, image, test)
+        post_model.Post.create_post(
+                profileID = current_user.email,
+                description = form.content.data 
+            )
         return render_template("wall.html")
     return render_template('post.html', form=form)
   
