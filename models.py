@@ -88,7 +88,7 @@ class Post(ndb.Model):
         content = Post(user=user, content=content, number_of_likes=number_of_likes, public=public, shared_links=shared_links)
         content.put()
         return content
-
+'''
 class Event(ndb.Model):
     Creator = ndb.StringProperty()
     EventName = ndb.StringProperty()
@@ -103,4 +103,4 @@ class Event(ndb.Model):
         content = Event(Creator=Creator, EventName=EventName, Location=Location, Date=Date, Time=Time, Description=Description)
         content.put()
         return content
-
+'''
