@@ -102,3 +102,6 @@ class LoginForm(FlaskForm):
 
 class PostForm(FlaskForm):
     content = TextAreaField("What are you upto?", validators=[DataRequired()])
+
+class EventForm(FlaskForm):
+    Description = TextAreaField("Party at Jesse's (21st)", validators=[DataRequired()])
