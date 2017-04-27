@@ -131,7 +131,7 @@ def event():
     if form.validate_on_submit():        
         event_model.event.create_event(profileID, EventName, Location, Date, Time, Description, test)
         return render_template("wall.html")
-    return render_template('events.html', form=form)
+    return render_template('Event.html', form=form)
 
 
 @app.route('/logout')
