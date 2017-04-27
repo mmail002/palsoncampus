@@ -1,0 +1,97 @@
+html>
+  <head>
+    <title>Profile Update</title>
+    <meta charset="utf-8"> 
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="/static/style.css"/>
+        <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
+
+  </head>
+  <body>
+    <li><label for="Name">Name</label>
+      <input type="Name" name="Name" required></li>
+
+    <li><label for="Last Name">Last Name</label>
+      <input type"Last Name" name="Last Name" required></li>
+
+   <li><label for="School">School</label>
+     <select>
+       <option value="  " >   </option> <!-- this needs to be the first -->
+       <option value="SUNY Plattsburgh">SUNY Plattsburgh</option>
+       <option value="SUNY Albany">SUNY Albany</option>
+       <option value="Clinton Community College">Clinton Community College</option>
+     </select></li>    
+
+    <li><label for="Major">Major</label>
+    <select>
+       <option value="   ">   </option> <!-- this needs to be the first -->
+       <option value="Computer  Science">Computer Science</option>
+       <option value="Nursing">Nursing</option>
+       <option value="Biology">Biology</option>
+    </select></li>
+
+    <li><label for="Minor">Minor</label>
+    <select>
+       <option value="   ">   </option> <!-- this needs to be the first -->
+       <option value="Computer Science">Computer Science</option>
+       <option value="Nursing">Nursing</option>
+       <option value="Biology">Biology</option>
+    </select></li>
+
+    <label for="day">Date of Birth:</label>
+    <div id="date1" class="datefield">
+      <input id="month" type="tel" maxlength="2" placeholder="MM"/> /              
+      <input id="day" type="tel" maxlength="2" placeholder="DD"/>/
+      <input id="year" type="tel" maxlength="4" placeholder="YYYY"/>
+    </div>
+
+    <li><label for="Status">Status</label>
+      <form>
+	<input type="radio" name="Status" value="Active"> Active<br>
+	<input type="radio" name="Status" value="Inactive"> Inactive<br>
+	<input type="radio" name="Status" value="Alumni"> Alumni<br>
+    </form></li>
+
+     <li><label for="Gender">Gender</label>
+     <form>
+       <input type="radio" name="gender" value="male"> Male<br>
+       <input type="radio" name="gender" value="female"> Female<br>
+       <input type="radio" name="gender" value="other"> Other<br>
+     </form></li>
+    
+     <li><label for="Hometown">Hometown</label>
+     <input type="Hometown" name="Hometown"> </li>
+    
+     <li><label for="State">State</label>
+     <input type="State" name="State"></li>
+     
+     <li><label for="Country">Country</label>
+     <select>
+       <option value="   ">   </option> <!-- this needs to be the first -->
+       <option value="United States">United States</option>
+       <option value="Canada">Canada</option>
+       <option value="France">France</option>
+    </select></li>
+
+
+<li><lable for="About Yourself">About Yourself</label>
+<form>
+  <table border="0">
+    <tr>
+      <td>
+        <textarea id="textarea" name="comments" maxlength="255"></textarea>
+      </td>
+    </tr>
+  </table>
+</form> </li>
+
+<li>
+  <input type="submit" value="Update"></li>
+</ul>
+
+<script src="/static/college.js"></script>
+
+  </body>
+</html>
