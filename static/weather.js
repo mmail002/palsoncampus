@@ -5,7 +5,7 @@ if("geolocation" in navigator) { //If geolocation is available, ask browser
     loadWeather(latitude+','+longitude);
 }
     
-    TempLocation = ""; //Var that will stored college from db
+    TempLocation = "Plattsburgh,NY"; //Var that will stored college from db
     function error1() { //If Geolocation request is denied the func will do this
     
     if(TempLocation != ""){
