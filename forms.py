@@ -104,4 +104,18 @@ class PostForm(FlaskForm):
     content = TextAreaField("What are you upto?", validators=[DataRequired()])
 
 class EventForm(FlaskForm):
-    Description = TextAreaField("Party at Jesse's (21st)", validators=[DataRequired()])
+    Creator  = StringField("Who created this")
+    EventName = StringField("What is the event called")
+    Location = StringField("Where is the event")
+    Date = DateField('yyyy-mm-dd', format='%Y-%m-%d',
+                validators=[
+                        DataRequired(),
+                    ]
+            )
+    Time = = TimeField(hour, minute, AM/PM,
+                validators=[
+                        DataRequired(),
+                    ]
+            )
+    Description = TextAreaField("Describe the event", validators=[DataRequired()])
+
