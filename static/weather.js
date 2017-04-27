@@ -29,7 +29,6 @@ $(document).ready(function(){
 
 function codeAddress() { /*Using Google maps API, gets lat and long and will load those in the loadWeather 
     func, the lat and long are returned by entering a location in serach bar and hitting enter */
-    alert("Worked");
     var address = document.getElementById("address").value; // Looks at input box with id address
     var geocoder = new google.maps.Geocoder(); //Call to Google maps API
 
