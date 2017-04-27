@@ -1,10 +1,9 @@
-
-/*if("geolocation" in navigator) { //If geolocation is available, ask browser
+if("geolocation" in navigator) { //If geolocation is available, ask browser
     function success1(position) { // If geolocation is accepted, the func will return data
     var latitude  = position.coords.latitude;
     var longitude = position.coords.longitude;
     loadWeather(latitude+','+longitude);
-}*/
+}
     
     TempLocation = ""; //Var that will stored college from db
     function error1() { //If Geolocation request is denied the func will do this
@@ -30,6 +29,7 @@ $(document).ready(function(){
 
 function codeAddress() { /*Using Google maps API, gets lat and long and will load those in the loadWeather 
     func, the lat and long are returned by entering a location in serach bar and hitting enter */
+    alert("Worked");
     var address = document.getElementById("address").value; // Looks at input box with id address
     var geocoder = new google.maps.Geocoder(); //Call to Google maps API
 
