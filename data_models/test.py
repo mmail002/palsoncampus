@@ -187,6 +187,15 @@ class PostTest(unittest.TestCase):
         postkey = post.Post.create_post(profileID=email, description=description, test=True)
         self.assertEqual(email, postkey.key.parent().id())
         self.assertEqual(description, postkey.description)
+        return postkey
+
+    def test_add_comment(self):
+        # activate post
+        newPost = self.test_create_post()
+        # end activate post
+        post.Post.add_comment(profileID='new@comment.com', post=newPost, comment='This is a test comment')
+        self.assertEqual('new@comment.com', newPost.comments[0].profileID)
+        self.assertEqual('This is a test comment', newPost.comments[0].comment)
 
     def tearDown(self):
         self.testbed.deactivate()

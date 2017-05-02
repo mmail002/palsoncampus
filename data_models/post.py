@@ -7,16 +7,16 @@ from google.appengine.ext import ndb
 import profile
 
 class Likes(ndb.Model):
-	# TODO
-	pass
+	profileID = ndb.StringProperty() # might be KeyProperty?
 
 class Revision(ndb.Model):
 	#TODO
 	pass
 
 class Comment(ndb.Model):
-	#TODO
-	pass
+	comment = ndb.StringProperty()
+	profileID = ndb.StringProperty() # might be saved as KeyProperty?
+	#post_id = ndb.StringProperty()  # might be saved as KeyProperty?
 
 class Post(ndb.Model):
 	
@@ -61,4 +61,12 @@ class Post(ndb.Model):
 		if(test == True):
 			return post
 
+	@classmethod
+	def add_comment(cls, profileID, post, comment):
+		post.comments.append(Comment(profileID=profileID, comment=comment))
+		post.put()
 
+	@classmethod
+	def add_like(cls, post, profileID):
+		post.likes.append(Likes(profileID=profileID))
+		post.put()
