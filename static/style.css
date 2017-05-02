@@ -62,6 +62,9 @@ h3{
      margin-left:18%;
 }
 /*Wall*/
+body.wall_body{
+	background-color:white;
+}
 #left_bar{
     margin-top:4%;
     height: 50em;
