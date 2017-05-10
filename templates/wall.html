@@ -3,16 +3,15 @@
 <head>
     <meta charset="utf-8"> 
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css" href="/static/style.css"/>
+    <link rel="stylesheet" type="text/css" href="/static/wall_style.css"/>
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Indie+Flower" rel="stylesheet">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>  
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.0/jquery.min.js"></script>
 </head>
 <body class="wall_body">
-    <nav class="navbar navbar-default navbar-fixed-top">        
+    <nav style="background-color: #e51837;"class="navbar navbar-default navbar-fixed-top">        
         <div class="container-fluid">
             <div class="navbar-header">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
@@ -20,7 +19,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>                        
                 </button>          
-             <a href="#" class="navbar-brand">PalsOnCampus</a> 
+             <a style="color:white;" href="#" class="navbar-brand">PalsOnCampus</a> 
             </div>
         <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
@@ -34,7 +33,7 @@
                         </button>
                     </div>
                     </div>
-                    <a hraf="#">Weather Widget</a>          
+                    <a style="color:white;" href="#">Weather Widget</a>          
                     </form>                        
                 </li>
           </ul>  
@@ -43,7 +42,24 @@
     <div class="container-fluid">
         <div class="row">
             <div id="left_bar" class="col-md-4 text-center">
-                <img id="user" src="" class="img-thumbnail" alt="Cinque Terre" width="304" height="236"> 
+                <img id="user" src="/static/img/user.png" class="img-thumbnail" alt="Cinque Terre" width="164" height="100"> 
+                <div style="margin-top:8%;" id="user_name">
+                    <h4>Name</h4>
+                </div>
+                
+                <div style="margin-top:10%; width:150px;" class="btn-group-vertical">
+                    <button width=300 id="profile_button" type="button" class="btn">Profile</button>
+                    <br>
+                    <button id="events_button" type="button" class="btn">Events</button> 
+                    <br>
+                    <button id="groups_button" type="button" class="btn">Groups</button> 
+                    <br>
+                    <button id="friends_button" type="button" class="btn">Friends</button>
+                    <br>
+                    <button id="friends_button" type="button" class="btn">Log Out</button> 
+                </div>
+                
+                
             </div>
             <div id="main_view" class="media col-md-8">
                 <div class="form-group">
@@ -91,13 +107,12 @@
                             <span class="caret"></span></button>
                             <ul class="dropdown-menu">          
                                 <li>
-                                    <button type="button" class="btn btn-default btn-sm">
-                                      <span class="glyphicon glyphicon-edit"></span> Edit
+                                    <button type="button" data-toggle="tooltip" title="Edit" class="btn btn-default btn-sm">
+                                      <span class="glyphicon glyphicon-edit"></span> 
                                     </button>                                
-                                </li>
-                                <li>
-                                    <button type="button" class="btn btn-default btn-sm">
-                                      <span class="glyphicon glyphicon-trash"></span> Delete
+      			            <br>                          
+                                    <button type="button" data-toggle="tooltip" title="Delete" class="btn btn-default btn-sm">
+                                      <span class="glyphicon glyphicon-trash"></span> 
                                     </button>                                
                                 </li>                                
                             </ul>
@@ -125,10 +140,7 @@
            $("#comment_button").click(function(){
               $("#comment_box").toggle(); 
            }); 
-        });
-
-        
-    </script>    
-    
+        }); 
+    </script>     
 </body>
 </html>

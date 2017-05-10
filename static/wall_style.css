@@ -1,0 +1,52 @@
+/*Wall*/
+body.wall_body{
+    background-color:white;
+}
+#nav_bar{
+    background-color: #e51837;
+}
+#left_bar{
+    margin-top:4%;
+    height: 50em;
+    width:25em;
+    border-right:1px solid lightgrey;
+}
+#post_button{
+    float:right;
+}
+
+#user{
+    margin-top:10%;
+}
+#main_view{
+    margin-top:7%;
+}
+#post_view{
+    margin-top: 10%;
+}
+/*#right{
+    width:20%;
+}
+*/
+.dropdown-menu {
+    max-width: 10px; 
+}
+ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+li{
+    display: inline;
+    float:left;
+    margin-left:9px;
+}
+.overlay{
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 10;
+  background-color: rgba(0,0,0,0.5); /*dim the background*/
+}

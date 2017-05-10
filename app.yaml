@@ -22,7 +22,7 @@ handlers:
   script: main.update
 
 - url: /delete
-  script: main.delete
+  script: main.delete 
 
 libraries:
 - name: markupsafe
