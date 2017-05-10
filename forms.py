@@ -101,7 +101,7 @@ class LoginForm(FlaskForm):
 
 
 class PostForm(FlaskForm):
-    content = TextAreaField("What are you upto?", validators=[DataRequired()])
+    comment_data = TextAreaField("What are you upto?", validators=[DataRequired()])
 '''
 class EventForm(FlaskForm):
     Creator  = StringField("Who created this")

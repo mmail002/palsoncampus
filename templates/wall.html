@@ -63,9 +63,10 @@
             </div>
             <div id="main_view" class="media col-md-8">
                 <div class="form-group">
-                    <form> <!--EXTRA FORM-->
+                    <form action='/new_post' method='post'> <!--EXTRA FORM-->
+			{{form.hidden_tag()}}
                         <label for="post">Create a Post:</label>
-                        <textarea placeholder="what are you doing right now?"class="form-control" rows="5" id="post">
+                        <textarea name="comment_data" placeholder="what are you doing right now?"class="form-control" rows="5" id="post">
                         </textarea>
                         <ul>
                             <li><a href="#" data-toggle="tooltip" title="Picture">

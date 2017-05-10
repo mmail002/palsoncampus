@@ -106,7 +106,8 @@ def login():
             login_user(loginUser)
             
             # return "You've been logged in!"
-            return render_template('wall.html')
+            postForm = forms.PostForm()
+            return render_template('wall.html', form=postForm)
         except data_model.PasswordIncorrectError:
             return "Your email or password does not match!"
         except data_model.UserNotFoundError:
@@ -117,14 +118,17 @@ def login():
 
 @app.route('/new_post', methods=['GET', 'POST'])
 @login_required
-def post():
+def new_post():
     form = forms.PostForm()
-    if form.validate_on_submit():        
+    print(current_user.email)
+    print(form.comment_data.data)
+    if form.validate_on_submit():
+        print(current_user.email, form.comment_data.data)       
         post_model.Post.create_post(
                 profileID = current_user.email,
-                description = form.content.data 
+                description = form.comment_data.data 
             )
-        return render_template("wall.html")
+        return render_template("wall.html", form=form)
     return render_template('post.html', form=form)
 '''  
 @app.route('/create_event', methods=['GET', 'POST'])
