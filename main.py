@@ -142,7 +142,7 @@ def event():
 @login_required
 def logout():
     logout_user()
-    return dedirect(url_for('index')) 
+    return redirect(url_for('index')) 
 
 
 @app.route('/create', methods=['GET'])
